@@ -4,6 +4,7 @@
   [URLPath] [nvarchar](255) NULL,
   [URLName] [nvarchar](255) NULL,
   [URLOrder] [int] NULL,
+  [test] [int] NULL,
   PRIMARY KEY CLUSTERED ([URLID])
 )
 ON [PRIMARY]
