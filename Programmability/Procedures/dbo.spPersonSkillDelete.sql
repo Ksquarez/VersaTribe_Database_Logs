@@ -1,0 +1,19 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [dbo].[spPersonSkillDelete]
+(
+	@Original_PerSk_Id int
+)
+AS
+Begin Try
+	SET NOCOUNT OFF;
+DELETE FROM [PersonSkill] WHERE (([PerSk_Id] = @Original_PerSk_Id))
+End try
+
+BEGIN CATCH
+
+  INSERT INTO dbo.DB_Errors
+    VALUES (SUSER_SNAME(), ERROR_NUMBER(), ERROR_STATE(), ERROR_SEVERITY(), ERROR_LINE(), ERROR_PROCEDURE(), ERROR_MESSAGE(), GETDATE());
+
+END CATCH
+GO

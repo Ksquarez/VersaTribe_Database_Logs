@@ -1,0 +1,17 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [dbo].[spDeptParentList]
+AS
+BEGIN TRY
+    SET NOCOUNT ON;
+    SELECT D1.Dept_Id,D2.Dept_Id AS Parent_dept_Id, D1.Dept_Name, D2.Dept_Name AS ParentDeptName, D1.Status, D1.TOwner, D1.TStamp
+    FROM Department D1
+    LEFT JOIN Department D2 ON D1.Parent_dept_Id = D2.Dept_Id
+
+END TRY
+BEGIN CATCH
+    INSERT INTO dbo.DB_Errors
+    VALUES (SUSER_SNAME(), ERROR_NUMBER(), ERROR_STATE(), ERROR_SEVERITY(), ERROR_LINE(), ERROR_PROCEDURE(), ERROR_MESSAGE(), GETDATE());
+
+END CATCH
+GO

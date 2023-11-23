@@ -1,0 +1,32 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [dbo].[spOrgByIdOrName]
+(
+  @Org_Id int,
+  @Org_Name nvarchar(50)
+)
+AS
+BEGIN TRY
+SET NOCOUNT ON;
+
+IF ( @Org_Id IS NOT NULL )
+  BEGIN
+     SELECT * FROM Org WHERE Org_Id = @Org_Id
+  END
+ELSE
+ BEGIN
+    IF ( @Org_Name IS NOT NULL )
+       BEGIN
+         SELECT * FROM Org WHERE Org_Name = @Org_Name
+       END
+ END
+
+END TRY
+
+BEGIN CATCH
+
+  INSERT INTO dbo.DB_Errors
+    VALUES (SUSER_SNAME(), ERROR_NUMBER(), ERROR_STATE(), ERROR_SEVERITY(), ERROR_LINE(), ERROR_PROCEDURE(), ERROR_MESSAGE(), GETDATE());
+
+END CATCH
+GO

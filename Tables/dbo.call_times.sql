@@ -1,0 +1,36 @@
+﻿CREATE TABLE [dbo].[call_times] (
+  [call_time_id] [int] IDENTITY,
+  [call_time_name] [nvarchar](max) NULL,
+  [call_time_comments] [nvarchar](max) NULL,
+  [ct_default_start] [smallint] NULL,
+  [ct_default_stop] [smallint] NULL,
+  [ct_sunday_start] [smallint] NULL,
+  [ct_sunday_stop] [smallint] NULL,
+  [ct_monday_start] [smallint] NULL,
+  [ct_monday_stop] [smallint] NULL,
+  [ct_tuesday_start] [smallint] NULL,
+  [ct_tuesday_stop] [smallint] NULL,
+  [ct_wednesday_start] [smallint] NULL,
+  [ct_wednesday_stop] [smallint] NULL,
+  [ct_thursday_start] [smallint] NULL,
+  [ct_thursday_stop] [smallint] NULL,
+  [ct_friday_start] [smallint] NULL,
+  [ct_friday_stop] [smallint] NULL,
+  [ct_saturday_start] [smallint] NULL,
+  [ct_saturday_stop] [smallint] NULL,
+  [ct_state_call_times] [nvarchar](max) NULL,
+  [default_afterhours_filename_override] [nvarchar](max) NULL,
+  [sunday_afterhours_filename_override] [nvarchar](max) NULL,
+  [monday_afterhours_filename_override] [nvarchar](max) NULL,
+  [tuesday_afterhours_filename_override] [nvarchar](max) NULL,
+  [wednesday_afterhours_filename_override] [nvarchar](max) NULL,
+  [thursday_afterhours_filename_override] [nvarchar](max) NULL,
+  [friday_afterhours_filename_override] [nvarchar](max) NULL,
+  [saturday_afterhours_filename_override] [nvarchar](max) NULL,
+  [user_group] [nvarchar](max) NULL,
+  [Org_Id] [int] NULL,
+  [ct_holidays] [nvarchar](max) NULL
+)
+ON [PRIMARY]
+TEXTIMAGE_ON [PRIMARY]
+GO

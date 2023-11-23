@@ -1,0 +1,16 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE proc [dbo].[spHobbyByName]
+@Name  NVARCHAR(MAX)
+As
+Begin Try
+	Select * from Hobby Where Name= @Name
+End try
+
+BEGIN CATCH
+
+  INSERT INTO dbo.DB_Errors
+    VALUES (SUSER_SNAME(), ERROR_NUMBER(), ERROR_STATE(), ERROR_SEVERITY(), ERROR_LINE(), ERROR_PROCEDURE(), ERROR_MESSAGE(), GETDATE());
+
+END CATCH
+GO
