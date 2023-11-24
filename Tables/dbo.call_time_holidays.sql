@@ -7,7 +7,8 @@
   [ct_default_start] [smallint] NOT NULL,
   [ct_default_stop] [smallint] NOT NULL,
   [default_afterhours_filename_override] [nvarchar](max) NULL,
-  [user_group] [nvarchar](max) NULL
+  [user_group] [nvarchar](max) NULL,
+  [Org_Id] [int] NULL
 )
 ON [PRIMARY]
 TEXTIMAGE_ON [PRIMARY]
