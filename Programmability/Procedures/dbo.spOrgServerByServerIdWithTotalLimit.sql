@@ -1,0 +1,23 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [dbo].[spOrgServerByServerIdWithTotalLimit]
+(
+  @Server_Id INT
+)
+AS
+Begin Try
+	SET NOCOUNT ON;
+
+	SELECT Server_Id, SUM(Limit) AS TotalLimitCount
+    FROM OrgServers
+    WHERE Server_Id = @Server_Id
+    GROUP BY Server_Id;
+
+End Try
+BEGIN CATCH
+
+  INSERT INTO dbo.DB_Errors
+    VALUES (SUSER_SNAME(), ERROR_NUMBER(), ERROR_STATE(), ERROR_SEVERITY(), ERROR_LINE(), ERROR_PROCEDURE(), ERROR_MESSAGE(), GETDATE());
+
+END CATCH
+GO

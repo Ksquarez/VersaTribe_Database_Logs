@@ -2,6 +2,9 @@
 GO
 -- Create stored procedure to get today's logs
 CREATE PROCEDURE [dbo].[sp_Logs_GetTodayDatabaseLogs]
+(
+  @PostTime DATE = NULL
+)
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -19,5 +22,12 @@ BEGIN
     WHERE [PostTime] >= @StartDate
       AND [PostTime] < @EndDate
     ORDER BY [PostTime] DESC;
+
+	-- Retrieve logs for any date
+	SELECT *
+    FROM [dbo].[DatabaseLog]
+    WHERE CONVERT(DATE, PostTime) = @PostTime -- '2023-11-28';
+	ORDER BY [PostTime] DESC;
+
 END;
 GO

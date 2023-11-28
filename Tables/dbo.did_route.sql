@@ -8,6 +8,7 @@
   [update_date] [datetime] NULL,
   [enabled] [bit] NOT NULL DEFAULT (0),
   [Org_Id] [int] NULL,
+  [call_time_id] [int] NULL,
   CONSTRAINT [PK_did_route] PRIMARY KEY CLUSTERED ([id])
 )
 ON [PRIMARY]
