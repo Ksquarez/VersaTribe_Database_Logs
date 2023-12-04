@@ -5,7 +5,12 @@ CREATE PROCEDURE [dbo].[spOrgInfoById]
 AS
 BEGIN TRY
 	SET NOCOUNT ON;
-     SELECT * FROM OrgInfo WHERE Org_Id = @Org_Id;
+     SELECT Org.Org_Name,OrgInfo.Org_Id, OrgInfo.About_org,OrgInfo.City, OrgInfo.Contact_email,OrgInfo.Contact_number,
+			OrgInfo.Country,OrgInfo.Status, OrgInfo.TStamp,OrgInfo.TOwner	 
+	 From OrgInfo
+	 Inner JOIN Org ON OrgInfo.Org_Id = Org.Org_Id
+	 WHERE OrgInfo.Org_Id= @Org_Id;
+
 END TRY
 BEGIN CATCH
   INSERT INTO dbo.DB_Errors
