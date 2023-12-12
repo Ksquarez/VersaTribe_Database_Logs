@@ -1,6 +1,5 @@
 ﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
 GO
--- Create stored procedure to get today's logs
 CREATE PROCEDURE [dbo].[sp_Logs_GetTodayDatabaseLogs]
 (
   @PostTime DATE = NULL

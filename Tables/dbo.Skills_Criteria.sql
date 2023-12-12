@@ -18,7 +18,7 @@ CREATE UNIQUE INDEX [IX_Skills_Criteria]
 GO
 
 ALTER TABLE [dbo].[Skills_Criteria]
-  ADD FOREIGN KEY ([Training_Id]) REFERENCES [dbo].[Training] ([Training_Id])
+  ADD CONSTRAINT [FK__Skills_Cr__Train__414EAC47] FOREIGN KEY ([Training_Id]) REFERENCES [dbo].[Training] ([Training_Id]) ON DELETE CASCADE ON UPDATE CASCADE
 GO
 
 ALTER TABLE [dbo].[Skills_Criteria]

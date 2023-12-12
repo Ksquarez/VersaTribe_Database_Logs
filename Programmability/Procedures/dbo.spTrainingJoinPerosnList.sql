@@ -10,6 +10,7 @@ BEGIN TRY
 	SET NOCOUNT ON;
 
 	SELECT Training.Training_Id,
+		   Person.Person_Id,
 		   Training.Training_Name,
 		   Person.FirstName,
 		   Person.LastName,
