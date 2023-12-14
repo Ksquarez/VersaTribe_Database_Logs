@@ -1,18 +1,19 @@
 ﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
 GO
-CREATE PROCEDURE [dbo].[spShiftList]
+CREATE proc [dbo].[sp_OrgServer__Org_Id]
+(
+@Org_Id int
+)
 AS
-Begin Try
-	SET NOCOUNT ON;
-SELECT        *
-FROM            Shift
-End Try
+BEGIN TRY
 
+	SELECT * FROM OrgServers WHERE Org_Id = @Org_Id;
+
+END TRY
 BEGIN CATCH
 
   INSERT INTO dbo.DB_Errors
     VALUES (SUSER_SNAME(), ERROR_NUMBER(), ERROR_STATE(), ERROR_SEVERITY(), ERROR_LINE(), ERROR_PROCEDURE(), ERROR_MESSAGE(), GETDATE());
 
 END CATCH
-
 GO

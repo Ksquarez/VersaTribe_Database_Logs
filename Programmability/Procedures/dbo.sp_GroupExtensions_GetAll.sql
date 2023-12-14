@@ -1,0 +1,16 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+
+CREATE PROCEDURE [dbo].[sp_GroupExtensions_GetAll]
+AS
+BEGIN TRY
+	SET NOCOUNT ON;
+    SELECT *
+    FROM [dbo].[GroupExtensions];
+END TRY
+BEGIN CATCH
+
+   EXECUTE [dbo].[uspLogError];
+
+END CATCH
+GO

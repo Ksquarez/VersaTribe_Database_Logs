@@ -10,6 +10,7 @@
   [IsCaller] [bit] NULL,
   [Extension_Id] [bigint] NULL,
   [Server_Id] [int] NULL,
+  [Is_Default] [bit] NULL,
   CONSTRAINT [PK_OrgPerson_1] PRIMARY KEY CLUSTERED ([Person_Id], [Org_Id])
 )
 ON [PRIMARY]

@@ -1,13 +1,9 @@
 ﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
 GO
-CREATE VIEW [dbo].[Vw_OrgDepartments]
+CREATE VIEW [dbo].[Vw_Servers]
 AS
-SELECT        dbo.Org.Org_Id, dbo.Org.Org_Name, dbo.Department.Dept_Name, dbo.Department.Parent_dept_Id,
-                             (SELECT        Dept_Name
-                               FROM            dbo.Department AS Parent_Department
-                               WHERE        (Dept_Id = dbo.Department.Parent_dept_Id) AND (Org_Id = dbo.Org.Org_Id)) AS Parent_dept_Name, dbo.Department.Status, dbo.Department.TStamp, dbo.Department.TOwner, dbo.Department.Is_Default
-FROM            dbo.Org INNER JOIN
-                         dbo.Department ON dbo.Department.Org_Id = dbo.Org.Org_Id
+SELECT        dbo.Servers.*
+FROM            dbo.Servers
 GO
 
 EXEC sys.sp_addextendedproperty N'MS_DiagramPane1', N'[0E232FF0-B466-11cf-A24F-00AA00A3EFFF, 1.00]
@@ -15,7 +11,7 @@ Begin DesignProperties =
    Begin PaneConfigurations = 
       Begin PaneConfiguration = 0
          NumPanes = 4
-         Configuration = "(H (1[40] 4[20] 2[20] 3) )"
+         Configuration = "(H (1[45] 4[16] 2[20] 3) )"
       End
       Begin PaneConfiguration = 1
          NumPanes = 3
@@ -81,25 +77,15 @@ Begin DesignProperties =
          Left = 0
       End
       Begin Tables = 
-         Begin Table = "Org"
+         Begin Table = "Servers"
             Begin Extent = 
                Top = 6
                Left = 38
-               Bottom = 136
-               Right = 208
+               Bottom = 335
+               Right = 299
             End
             DisplayFlags = 280
             TopColumn = 0
-         End
-         Begin Table = "Department"
-            Begin Extent = 
-               Top = 6
-               Left = 246
-               Bottom = 136
-               Right = 416
-            End
-            DisplayFlags = 280
-            TopColumn = 4
          End
       End
    End
@@ -127,8 +113,8 @@ Begin DesignProperties =
       End
    End
 End
-', 'SCHEMA', N'dbo', 'VIEW', N'Vw_OrgDepartments'
+', 'SCHEMA', N'dbo', 'VIEW', N'Vw_Servers'
 GO
 
-EXEC sys.sp_addextendedproperty N'MS_DiagramPaneCount', 1, 'SCHEMA', N'dbo', 'VIEW', N'Vw_OrgDepartments'
+EXEC sys.sp_addextendedproperty N'MS_DiagramPaneCount', 1, 'SCHEMA', N'dbo', 'VIEW', N'Vw_Servers'
 GO

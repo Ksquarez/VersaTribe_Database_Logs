@@ -1,11 +1,11 @@
 ﻿CREATE TABLE [dbo].[OrgServersHistory] (
-  [Org_Id] [int] NOT NULL,
-  [Server_Id] [int] NOT NULL,
+  [Org_Id] [int] NULL,
+  [Server_Id] [int] NULL,
   [Limit] [int] NULL,
-  [Status] [int] NOT NULL,
-  [TStamp] [datetime2] NOT NULL,
-  [TOwner] [nvarchar](256) NOT NULL,
-  [Gr_Id] [int] NULL
+  [Status] [int] NULL,
+  [TStamp] [datetime2] NULL,
+  [TOwner] [nvarchar](256) NULL,
+  [Group_Id] [int] NULL
 )
 ON [PRIMARY]
 GO

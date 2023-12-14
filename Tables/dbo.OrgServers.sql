@@ -5,7 +5,7 @@
   [Status] [int] NOT NULL CONSTRAINT [DF_OrgServers_Status] DEFAULT (0),
   [TStamp] [datetime2] NOT NULL,
   [TOwner] [nvarchar](256) NOT NULL,
-  [Gr_Id] [int] NULL,
+  [Group_Id] [int] NULL,
   CONSTRAINT [PK_OrgServers] PRIMARY KEY CLUSTERED ([Org_Id], [Server_Id])
 )
 ON [PRIMARY]
@@ -28,4 +28,8 @@ GO
 
 ALTER TABLE [dbo].[OrgServers]
   ADD CONSTRAINT [FK_OrgServers_Org] FOREIGN KEY ([Org_Id]) REFERENCES [dbo].[Org] ([Org_Id])
+GO
+
+ALTER TABLE [dbo].[OrgServers]
+  ADD CONSTRAINT [FK_OrgServers_Servers] FOREIGN KEY ([Server_Id]) REFERENCES [dbo].[Servers] ([Srv_Id])
 GO

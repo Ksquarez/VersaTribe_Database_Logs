@@ -6,6 +6,7 @@
   [Status] [int] NOT NULL CONSTRAINT [DF_Department_Status] DEFAULT (0),
   [TStamp] [datetime2] NOT NULL,
   [TOwner] [nvarchar](256) NOT NULL,
+  [Is_Default] [bit] NULL,
   CONSTRAINT [PK_Department] PRIMARY KEY CLUSTERED ([Dept_Id])
 )
 ON [PRIMARY]
