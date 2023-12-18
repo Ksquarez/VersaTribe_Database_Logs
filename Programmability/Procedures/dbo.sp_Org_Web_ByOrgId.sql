@@ -1,6 +1,6 @@
 ﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
 GO
-CREATE PROCEDURE [dbo].[sp_Org(Web)_ByOrgId] 
+CREATE PROCEDURE [dbo].[sp_Org_Web_ByOrgId] 
 (
     @Org_Id INT
 )

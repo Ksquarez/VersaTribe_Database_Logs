@@ -8,6 +8,11 @@
 ON [PRIMARY]
 GO
 
+CREATE UNIQUE INDEX [IX_GroupExtensions]
+  ON [dbo].[GroupExtensions] ([Extension_Id], [Group_Id])
+  ON [PRIMARY]
+GO
+
 ALTER TABLE [dbo].[GroupExtensions]
   ADD FOREIGN KEY ([Group_Id]) REFERENCES [dbo].[Groups] ([Group_Id])
 GO

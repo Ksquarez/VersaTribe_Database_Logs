@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [dbo].[Groups] (
   [Group_Id] [int] IDENTITY,
   [Org_Id] [int] NULL,
-  [Group_Name] [nvarchar](max) NULL,
+  [Group_Name] [nvarchar](200) NULL,
   [Strategy] [nvarchar](max) NULL,
   [TimeOut] [int] NULL,
   [IsDefault] [bit] NULL,
@@ -9,6 +9,11 @@
 )
 ON [PRIMARY]
 TEXTIMAGE_ON [PRIMARY]
+GO
+
+CREATE UNIQUE INDEX [IX_Groups]
+  ON [dbo].[Groups] ([Org_Id], [Group_Name])
+  ON [PRIMARY]
 GO
 
 ALTER TABLE [dbo].[Groups]

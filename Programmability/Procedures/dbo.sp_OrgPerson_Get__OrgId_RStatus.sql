@@ -1,9 +1,9 @@
 ﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
 GO
-CREATE PROCEDURE [dbo].[sp_OrgPerson__Pk]
+CREATE PROCEDURE [dbo].[sp_OrgPerson_Get__OrgId_RStatus]
 (
  @Org_Id INT,
- @Person_Id INT
+ @Request_Status INT
 )
 AS
 BEGIN TRY
@@ -28,15 +28,11 @@ SELECT
 			  OrgPerson.Dept_Req,
 			  OrgPerson.TStamp, 
 			  OrgPerson.TOwner,
-			  OrgPerson.IsCaller,
-			  Extensions.Extension_Id
+			  OrgPerson.IsCaller
 FROM          OrgPerson LEFT JOIN Department ON Department.Dept_Id = OrgPerson.Dept_Id 
 						 INNER JOIN Person ON OrgPerson.Person_Id = Person.Person_Id 
 						 INNER JOIN Org ON Org.Org_Id = OrgPerson.Org_Id
-						 LEFT JOIN Extensions ON Extensions.Org_Id = @Org_Id AND Extensions.Person_Id = @Person_Id
-						 WHERE Org.Org_Id = @Org_Id
-						 AND OrgPerson.Request_Status = 1 -- 'APPROVED'
-						 AND OrgPerson.Person_Id = @Person_Id
+						 WHERE Org.Org_Id = @Org_Id AND OrgPerson.Request_Status = @Request_Status
 
 END TRY
 

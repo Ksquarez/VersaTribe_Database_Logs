@@ -1,6 +1,6 @@
 ﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
 GO
-CREATE PROCEDURE [dbo].[sp_GroupExtensions(GrpUsers)_ByGroupId] 
+CREATE PROCEDURE [dbo].[sp_GroupExtensions_GrpUsers__ByGroupId] 
 (
     @Group_Id INT
 )
@@ -12,6 +12,7 @@ BEGIN TRY
 	FROM GroupExtensions AS GrpUsers
 	INNER JOIN Extensions ON Extensions.Extension_Id = GrpUsers.Extension_Id
 	INNER JOIN Person ON Person.Person_Id = Extensions.Person_Id
+	INNER JOIN Groups ON Groups.Group_Id = GrpUsers.Group_Id
 	WHERE GrpUsers.Group_Id = @Group_Id
 
 END TRY

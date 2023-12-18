@@ -1,6 +1,6 @@
 ﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
 GO
-CREATE PROCEDURE [dbo].[sp_Groups(Servers)_create] 
+CREATE PROCEDURE [dbo].[sp_Groups_Servers_create] 
 (
     @Org_Id INT,
 	@Group_Name NVARCHAR(MAX),

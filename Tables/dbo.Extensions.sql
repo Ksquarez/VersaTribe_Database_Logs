@@ -13,6 +13,11 @@ ON [PRIMARY]
 TEXTIMAGE_ON [PRIMARY]
 GO
 
+CREATE UNIQUE INDEX [IX_Extensions]
+  ON [dbo].[Extensions] ([Org_Id], [Person_Id])
+  ON [PRIMARY]
+GO
+
 ALTER TABLE [dbo].[Extensions]
   ADD FOREIGN KEY ([Org_Id]) REFERENCES [dbo].[Org] ([Org_Id])
 GO

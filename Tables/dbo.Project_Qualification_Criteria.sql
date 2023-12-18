@@ -5,7 +5,7 @@
   [Status] [int] NOT NULL CONSTRAINT [DF_Project_Qualification_Criteria_Status] DEFAULT (0),
   [TStamp] [datetime2] NOT NULL,
   [TOwner] [nvarchar](256) NOT NULL,
-  [Mandatory] [bit] NOT NULL,
+  [Mandatory] [bit] NULL,
   CONSTRAINT [PK_Project_Qualification_Criteria_Id] PRIMARY KEY CLUSTERED ([Proj_Qual_Id])
 )
 ON [PRIMARY]

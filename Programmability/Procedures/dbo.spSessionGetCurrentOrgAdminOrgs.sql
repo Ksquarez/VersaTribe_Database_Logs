@@ -2,7 +2,7 @@
 GO
 CREATE proc [dbo].[spSessionGetCurrentOrgAdminOrgs]
 (
-  @Username nvarchar(255)
+  @Username nvarchar(256)
 )
 As
 BEGIN TRY
