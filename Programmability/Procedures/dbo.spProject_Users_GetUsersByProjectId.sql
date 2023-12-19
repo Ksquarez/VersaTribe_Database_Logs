@@ -6,7 +6,7 @@ AS
 BEGIN TRY
     SET NOCOUNT ON;
 
-    SELECT    Project_User.Id, Projects.Person_Id, Projects.Project_Name, Person.FirstName
+    SELECT    Project_User.Id, Projects.Person_Id, Projects.Project_Name, Person.FirstName , Project_User.IsApproved
     FROM  Project_User
 	INNER JOIN Projects ON Projects.Project_Id = Project_User.Project_Id
 	INNER JOIN Person ON Person.Person_Id = Project_User.Person_Id		   
