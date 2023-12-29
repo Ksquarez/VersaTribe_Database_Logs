@@ -7,6 +7,7 @@
   [Status] [int] NOT NULL CONSTRAINT [DF_PersonQualification_Status] DEFAULT (0),
   [TOwner] [nvarchar](256) NOT NULL,
   [TStamp] [datetime2] NOT NULL,
+  [City] [nvarchar](50) NULL,
   CONSTRAINT [PK_PersonQualification] PRIMARY KEY CLUSTERED ([PQ_Id])
 )
 ON [PRIMARY]

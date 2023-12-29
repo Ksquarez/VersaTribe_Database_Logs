@@ -12,6 +12,11 @@
 ON [PRIMARY]
 GO
 
+CREATE INDEX [IX_Project_User]
+  ON [dbo].[Project_User] ([Person_Id], [Project_Id])
+  ON [PRIMARY]
+GO
+
 SET QUOTED_IDENTIFIER, ANSI_NULLS ON
 GO
 Create TRIGGER [dbo].[tr_Project_UserActivity]

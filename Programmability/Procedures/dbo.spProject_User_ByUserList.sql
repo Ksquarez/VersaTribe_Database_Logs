@@ -9,7 +9,8 @@ AS
 BEGIN TRY
 	SET NOCOUNT ON;
 
-	SELECT Projects.Project_Id,
+	SELECT Project_User.Id,
+		   Projects.Project_Id,
 		   Projects.Project_Name,
 		   Project_User.IsApproved
    FROM dbo.Org INNER JOIN

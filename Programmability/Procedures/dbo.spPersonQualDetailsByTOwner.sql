@@ -7,7 +7,7 @@ CREATE PROCEDURE [dbo].[spPersonQualDetailsByTOwner]
 AS
 Begin Try
 	SET NOCOUNT ON;
-	SELECT        PersonQualification.PQ_Id, Person.FirstName, Person.LastName, Course.Cou_Name, CourseType.Ctyp_Name, Institutes.Inst_Name, PersonQualification.YOP, PersonQualification.Grade,Institutes.City,
+	SELECT        PersonQualification.PQ_Id, Person.FirstName, Person.LastName, Course.Cou_Name, CourseType.Ctyp_Name, Institutes.Inst_Name, PersonQualification.YOP, PersonQualification.Grade,PersonQualification.City,
                          Person.TOwner, PersonQualification.TStamp, PersonQualification.Status
 	FROM                 Institutes INNER JOIN
                          Course INNER JOIN

@@ -10,6 +10,11 @@ ON [PRIMARY]
 TEXTIMAGE_ON [PRIMARY]
 GO
 
+CREATE UNIQUE INDEX [IDX_ServerGroups]
+  ON [dbo].[ServerGroups] ([Srv_Id], [Group_Id])
+  ON [PRIMARY]
+GO
+
 ALTER TABLE [dbo].[ServerGroups]
   ADD CONSTRAINT [FK_ServerGroups_Groups] FOREIGN KEY ([Group_Id]) REFERENCES [dbo].[Groups] ([Group_Id])
 GO

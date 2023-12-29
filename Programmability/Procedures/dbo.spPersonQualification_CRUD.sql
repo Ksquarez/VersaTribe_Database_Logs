@@ -10,6 +10,7 @@ CREATE Proc [dbo].[spPersonQualification_CRUD]
   @TStamp DATETIME2(7) = NULL,
   @TOwner NVARCHAR(256) = NULL,
   @Status INT = NULL,
+  @City nvarchar(50) = NULL,
   @Action NVARCHAR(100)
 )
 AS
@@ -28,11 +29,12 @@ BEGIN TRY
 			AND (@TStamp IS NULL OR TStamp = @TStamp)
 			AND (@TOwner IS NULL OR TOwner = @TOwner)
 			AND (@Status IS NULL OR Status = @Status)
+			AND (@City IS NULL  OR City = @City)
     END
 	 ELSE IF @Action = 'INSERT'
     BEGIN
-        INSERT INTO PersonQualification (QI_Id, Person_Id, YOP, Grade, TStamp, TOwner, Status)
-        VALUES (@QI_Id, @Person_Id, @YOP, @Grade, @TStamp, @TOwner, @Status)
+        INSERT INTO PersonQualification (QI_Id, Person_Id, YOP, Grade, TStamp, TOwner, Status,City)
+        VALUES (@QI_Id, @Person_Id, @YOP, @Grade, @TStamp, @TOwner, @Status,@City)
 
 		SELECT * FROM PersonQualification WHERE PQ_Id = SCOPE_IDENTITY();
 
@@ -46,7 +48,8 @@ BEGIN TRY
 			Grade = ISNULL(@Grade,Grade),
 			TStamp = @TStamp,
 			TOwner = @TOwner,
-			Status = ISNULL(@Status,Status)
+			Status = ISNULL(@Status,Status),
+			City = ISNULL(@City,City)
         WHERE PQ_Id = @PQ_Id
 
 		SELECT * FROM PersonQualification WHERE PQ_Id = @PQ_Id

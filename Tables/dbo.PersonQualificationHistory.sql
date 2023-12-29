@@ -6,7 +6,8 @@
   [Grade] [varchar](5) NULL,
   [Status] [int] NULL,
   [TOwner] [nvarchar](256) NOT NULL,
-  [TStamp] [datetime2] NOT NULL
+  [TStamp] [datetime2] NOT NULL,
+  [City] [nvarchar](50) NULL
 )
 ON [PRIMARY]
 GO
