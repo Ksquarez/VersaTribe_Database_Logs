@@ -3,8 +3,8 @@ GO
 CREATE PROCEDURE [dbo].[spProject_User_ByUserList]
 
 @Person_TOwner NVARCHAR(256),
-@IsApproved bit
-
+@IsApproved bit,
+@Org_Id int
 AS
 BEGIN TRY
 	SET NOCOUNT ON;
@@ -17,7 +17,7 @@ BEGIN TRY
     dbo.Projects ON dbo.Org.Org_Id = dbo.Projects.Org_Id INNER JOIN
     dbo.Project_User ON dbo.Projects.Project_Id = dbo.Project_User.Project_Id INNER JOIN
     dbo.Person ON dbo.Project_User.Person_Id = dbo.Person.Person_Id
-	WHERE Person.TOwner = @Person_TOwner AND Project_User.IsApproved = @IsApproved
+	WHERE Person.TOwner = @Person_TOwner AND Project_User.IsApproved = @IsApproved AND Projects.Org_Id = @Org_Id
 	
 
 

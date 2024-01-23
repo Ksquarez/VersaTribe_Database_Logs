@@ -9,12 +9,17 @@
   [Content] [varbinary](max) NULL,
   [TStamp] [datetime] NULL,
   [TOwner] [nvarchar](256) NULL,
-  [File_Comment] [nvarchar](max) NULL,
+  [File_Comment] [nvarchar](200) NULL,
   [Status] [int] NULL,
   CONSTRAINT [PK_Org_Files] PRIMARY KEY CLUSTERED ([Id])
 )
 ON [PRIMARY]
 TEXTIMAGE_ON [PRIMARY]
+GO
+
+CREATE UNIQUE INDEX [UK_Org_Files]
+  ON [dbo].[Org_Files] ([Org_Id], [File_Comment])
+  ON [PRIMARY]
 GO
 
 ALTER TABLE [dbo].[Org_Files]

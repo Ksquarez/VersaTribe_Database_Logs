@@ -17,11 +17,11 @@ GO
 
 SET QUOTED_IDENTIFIER, ANSI_NULLS ON
 GO
-Create TRIGGER [dbo].[tr_CourseActivity]
+CREATE TRIGGER [dbo].[tr_CourseActivity]
 ON [dbo].[Course]
 AFTER INSERT, UPDATE AS
 BEGIN
-INSERT INTO CourseHistory
+INSERT INTO [Histroy].[Course]
 SELECT * FROM INSERTED
 END
 GO

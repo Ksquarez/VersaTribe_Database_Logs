@@ -2,8 +2,12 @@
   [Srv_Group_Id] [int] IDENTITY,
   [Srv_Id] [int] NULL,
   [Group_Id] [int] NULL,
-  [Queue_Id] [int] NULL,
+  [Queue_Id] [nvarchar](max) NULL,
   [Queue_Name] [nvarchar](max) NULL,
+  [Status] [int] NULL,
+  [Entity_TStamp] [dbo].[Entity_TStamp] NULL,
+  [Service_TStamp] [dbo].[Service_TStamp] NULL,
+  [Service_Response] [dbo].[Service_Response] NULL,
   CONSTRAINT [PK_ServerGroups_Id] PRIMARY KEY CLUSTERED ([Srv_Group_Id])
 )
 ON [PRIMARY]

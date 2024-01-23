@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[call_times] (
   [call_time_id] [int] IDENTITY,
-  [call_time_name] [nvarchar](max) NULL,
+  [call_time_name] [nvarchar](200) NULL,
   [call_time_comments] [nvarchar](max) NULL,
   [ct_default_start] [time] NULL,
   [ct_default_stop] [time] NULL,
@@ -34,6 +34,11 @@
 )
 ON [PRIMARY]
 TEXTIMAGE_ON [PRIMARY]
+GO
+
+CREATE UNIQUE INDEX [UK_call_times]
+  ON [dbo].[call_times] ([call_time_name], [Org_Id])
+  ON [PRIMARY]
 GO
 
 ALTER TABLE [dbo].[call_times]

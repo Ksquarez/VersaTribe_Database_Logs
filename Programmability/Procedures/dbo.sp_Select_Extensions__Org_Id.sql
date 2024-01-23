@@ -7,7 +7,7 @@ CREATE PROCEDURE [dbo].[sp_Select_Extensions__Org_Id]
 AS
 BEGIN TRY
 
-	SELECT Extensions.*, Person.FirstName, Person.LastName, Person.TOwner FROM Extensions 
+	SELECT Extensions.*, Person.FirstName, Person.LastName, Person.TOwner AS 'AspUserName' FROM Extensions 
 	INNER JOIN Person ON Person.Person_Id = Extensions.Person_Id
 	WHERE Org_Id = @Org_Id;
 

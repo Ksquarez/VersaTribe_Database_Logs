@@ -1,0 +1,2 @@
+﻿CREATE SCHEMA [ErrorLog] AUTHORIZATION [dbo]
+GO

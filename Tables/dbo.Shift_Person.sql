@@ -10,17 +10,6 @@
 ON [PRIMARY]
 GO
 
-SET QUOTED_IDENTIFIER, ANSI_NULLS ON
-GO
-Create TRIGGER [dbo].[tr_Shift_PersonActivity]
-ON [dbo].[Shift_Person]
-AFTER INSERT, UPDATE AS
-BEGIN
-INSERT INTO Shift_PersonHistory
-SELECT * FROM INSERTED
-END
-GO
-
 ALTER TABLE [dbo].[Shift_Person]
   ADD CONSTRAINT [FK_Shift_Person_Person] FOREIGN KEY ([Person_Id]) REFERENCES [dbo].[Person] ([Person_Id])
 GO

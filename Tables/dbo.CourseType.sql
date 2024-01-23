@@ -20,7 +20,7 @@ CREATE TRIGGER [dbo].[tr_CourseTypeActivity]
 ON [dbo].[CourseType]
 AFTER INSERT, UPDATE AS
 BEGIN
-INSERT INTO CourseTypeHistory
+INSERT INTO [Histroy].[CourseType]
 SELECT * FROM INSERTED
 END
 GO

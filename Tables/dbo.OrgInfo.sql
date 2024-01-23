@@ -16,11 +16,11 @@ GO
 
 SET QUOTED_IDENTIFIER, ANSI_NULLS ON
 GO
-Create TRIGGER [dbo].[tr_OrgInfoActivity]
+CREATE TRIGGER [dbo].[tr_OrgInfoActivity]
 ON [dbo].[OrgInfo]
 AFTER INSERT, UPDATE AS
 BEGIN
-INSERT INTO OrgInfoHistory
+INSERT INTO [Histroy].[OrgInfo]
 SELECT * FROM INSERTED
 END
 GO

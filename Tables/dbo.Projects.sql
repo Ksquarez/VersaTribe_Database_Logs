@@ -25,7 +25,7 @@ CREATE TRIGGER [dbo].[tr_ProjectActivity]
 ON [dbo].[Projects]
 AFTER INSERT, UPDATE, DELETE AS
 BEGIN
-INSERT INTO ProjectsHistory
+INSERT INTO [Histroy].[Projects]
 SELECT * FROM INSERTED
 END
 GO

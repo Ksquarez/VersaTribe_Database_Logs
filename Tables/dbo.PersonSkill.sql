@@ -11,18 +11,18 @@
 ON [PRIMARY]
 GO
 
-CREATE INDEX [IX_PersonSkill_1]
-  ON [dbo].[PersonSkill] ([PerSk_Id])
+CREATE UNIQUE INDEX [IX_PersonSkill]
+  ON [dbo].[PersonSkill] ([Person_Id], [Skill_Id])
   ON [PRIMARY]
 GO
 
 SET QUOTED_IDENTIFIER, ANSI_NULLS ON
 GO
-Create TRIGGER [dbo].[tr_PersonSkillActivity]
+CREATE TRIGGER [dbo].[tr_PersonSkillActivity]
 ON [dbo].[PersonSkill]
 AFTER INSERT, UPDATE AS
 BEGIN
-INSERT INTO PersonSkillHistory
+INSERT INTO [Histroy].[PersonSkill]
 SELECT * FROM INSERTED
 END
 GO

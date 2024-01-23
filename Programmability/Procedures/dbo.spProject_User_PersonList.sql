@@ -15,6 +15,7 @@ BEGIN TRY
 		   Person.FirstName,
 		   Person.LastName,
 		   Person.TOwner,
+		   Project_User.Id,
 		   Project_User.IsApproved
    FROM dbo.Org INNER JOIN
     dbo.Projects ON dbo.Org.Org_Id = dbo.Projects.Org_Id INNER JOIN

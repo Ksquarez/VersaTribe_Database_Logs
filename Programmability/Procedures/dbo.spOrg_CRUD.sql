@@ -79,16 +79,16 @@ BEGIN try
         DECLARE @NewDept_Id INT = Scope_identity();
 
         -- Insert into Groups with default values
-        INSERT INTO groups
-        (
-            org_id,
-            group_name,
-            strategy,
-            timeout,
-            isdefault
-        )
-        VALUES
-        (@NewOrg_Id, 'Default', NULL, NULL, 1);
+        --INSERT INTO groups
+        --(
+        --    org_id,
+        --    group_name,
+        --    strategy,
+        --    timeout,
+        --    isdefault
+        --)
+        --VALUES
+        --(@NewOrg_Id, 'Default', NULL, NULL, 1);
 
         -- Fetch the Person_Id (TOwner) from the Person table based on OrgAdmin_Id
         DECLARE @Person_Id INT;

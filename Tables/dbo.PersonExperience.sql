@@ -14,13 +14,18 @@
 ON [PRIMARY]
 GO
 
+CREATE UNIQUE INDEX [IX_PersonExperience]
+  ON [dbo].[PersonExperience] ([Person_Id], [Exp_Id], [Start_date], [End_Date])
+  ON [PRIMARY]
+GO
+
 SET QUOTED_IDENTIFIER, ANSI_NULLS ON
 GO
-Create TRIGGER [dbo].[tr_PersonExperienceActivity]
+CREATE TRIGGER [dbo].[tr_PersonExperienceActivity]
 ON [dbo].[PersonExperience]
 AFTER INSERT, UPDATE AS
 BEGIN
-INSERT INTO PersonExperienceHistory
+INSERT INTO [Histroy].[PersonExperience]
 SELECT * FROM INSERTED
 END
 GO

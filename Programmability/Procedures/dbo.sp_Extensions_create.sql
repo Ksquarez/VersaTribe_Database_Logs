@@ -5,7 +5,7 @@ CREATE PROCEDURE [dbo].[sp_Extensions_create]
     @Extension_Id INT,
     @Org_Id INT,
 	@Person_Id INT,
-    @Extension_Srv_Id INT,
+    @Extension_Srv_Id NVARCHAR(MAX),
     @Srv_Id INT,
 	@UserName NVARCHAR(MAX),
 	@Secret NVARCHAR(MAX),

@@ -29,7 +29,7 @@ BEGIN TRY
 	    Srv_Group_Id INT,
         Srv_Id INT,
         Group_Id INT,
-        Queue_Id INT,
+        Queue_Id NVARCHAR(MAX),
         Queue_Name NVARCHAR(MAX)
     );
 	

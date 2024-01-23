@@ -17,11 +17,11 @@ GO
 
 SET QUOTED_IDENTIFIER, ANSI_NULLS ON
 GO
-Create TRIGGER [dbo].[tr_QualificationActivity]
+CREATE TRIGGER [dbo].[tr_QualificationActivity]
 ON [dbo].[Qualification]
 AFTER INSERT, UPDATE AS
 BEGIN
-INSERT INTO QualificationHistory
+INSERT INTO [Histroy].[Qualification]
 SELECT * FROM INSERTED
 END
 GO

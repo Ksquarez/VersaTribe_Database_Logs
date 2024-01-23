@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Department] (
   [Dept_Id] [int] IDENTITY,
-  [Org_Id] [int] NULL CONSTRAINT [DF_Department_Org_Id] DEFAULT (0),
+  [Org_Id] [int] NULL,
   [Dept_Name] [nvarchar](50) NOT NULL,
   [Parent_dept_Id] [int] NULL,
   [Status] [int] NOT NULL CONSTRAINT [DF_Department_Status] DEFAULT (0),
@@ -23,7 +23,7 @@ CREATE TRIGGER [dbo].[tr_DepartmentActivity]
 ON [dbo].[Department]
 AFTER INSERT, UPDATE AS
 BEGIN
-INSERT INTO DepartmentHistory
+INSERT INTO [Histroy].[Department]
 SELECT * FROM INSERTED
 END
 GO

@@ -19,11 +19,11 @@ GO
 
 SET QUOTED_IDENTIFIER, ANSI_NULLS ON
 GO
-Create TRIGGER [dbo].[tr_Project_UserActivity]
+CREATE TRIGGER [dbo].[tr_Project_UserActivity]
 ON [dbo].[Project_User]
 AFTER INSERT, UPDATE, DELETE AS
 BEGIN
-INSERT INTO Project_UserHistory
+INSERT INTO [Histroy].[Project_User]
 SELECT * FROM INSERTED
 END
 GO

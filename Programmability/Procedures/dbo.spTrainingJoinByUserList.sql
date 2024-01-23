@@ -3,8 +3,8 @@ GO
 CREATE PROCEDURE [dbo].[spTrainingJoinByUserList]
 
 @Person_TOwner NVARCHAR(256),
-@Is_Join bit
-
+@Is_Join bit,
+@Org_Id int
 AS
 BEGIN TRY
 	SET NOCOUNT ON;
@@ -16,7 +16,7 @@ BEGIN TRY
     dbo.Training ON dbo.Org.Org_Id = dbo.Training.Org_Id INNER JOIN
     dbo.Training_Join ON dbo.Training.Training_Id = dbo.Training_Join.Training_Id INNER JOIN
     dbo.Person ON dbo.Training_Join.Person_Id = dbo.Person.Person_Id
-	WHERE Person.TOwner = @Person_TOwner AND Training_Join.Is_Join = @Is_Join
+	WHERE Person.TOwner = @Person_TOwner AND Training_Join.Is_Join = @Is_Join AND Training.Org_Id = @Org_Id
 	
 
 

@@ -4,8 +4,6 @@
   [TStamp] [datetime2] NOT NULL,
   [TOwner] [nvarchar](256) NOT NULL,
   [Status] [int] NOT NULL CONSTRAINT [DF_OrgUserRole_Status] DEFAULT (0),
-  [IsCaller] [bit] NULL,
-  [Ext_Id] [int] NULL,
   CONSTRAINT [PK_OrgUserRole] PRIMARY KEY CLUSTERED ([Role_Id], [Person_Id])
 )
 ON [PRIMARY]
@@ -13,11 +11,11 @@ GO
 
 SET QUOTED_IDENTIFIER, ANSI_NULLS ON
 GO
-Create TRIGGER [dbo].[tr_OrgUserRoleActivity]
+CREATE TRIGGER [dbo].[tr_OrgUserRoleActivity]
 ON [dbo].[OrgUserRole]
 AFTER INSERT, UPDATE, DELETE AS
 BEGIN
-INSERT INTO OrgUserRoleHistory
+INSERT INTO [Histroy].[OrgUserRole]
 SELECT * FROM INSERTED
 END
 GO

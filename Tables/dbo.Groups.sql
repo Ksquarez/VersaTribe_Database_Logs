@@ -5,6 +5,12 @@
   [Strategy] [nvarchar](max) NULL,
   [TimeOut] [int] NULL,
   [IsDefault] [bit] NULL,
+  [TStamp] [datetime] NULL,
+  [TOwner] [nvarchar](256) NULL,
+  [Status] [int] NULL,
+  [Entity_TStamp] [dbo].[Entity_TStamp] NULL,
+  [Service_TStamp] [dbo].[Service_TStamp] NULL,
+  [Service_Response] [dbo].[Service_Response] NULL,
   CONSTRAINT [PK_Groups] PRIMARY KEY CLUSTERED ([Group_Id])
 )
 ON [PRIMARY]

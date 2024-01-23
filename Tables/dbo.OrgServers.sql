@@ -6,6 +6,7 @@
   [TStamp] [datetime2] NOT NULL,
   [TOwner] [nvarchar](256) NOT NULL,
   [Group_Id] [int] NULL,
+  [Is_Prime] [bit] NULL,
   CONSTRAINT [PK_OrgServers] PRIMARY KEY CLUSTERED ([Org_Id], [Server_Id])
 )
 ON [PRIMARY]
@@ -13,11 +14,11 @@ GO
 
 SET QUOTED_IDENTIFIER, ANSI_NULLS ON
 GO
-Create TRIGGER [dbo].[tr_OrgServersActivity]
+CREATE TRIGGER [dbo].[tr_OrgServersActivity]
 ON [dbo].[OrgServers]
 AFTER INSERT, UPDATE, DELETE AS
 BEGIN
-INSERT INTO OrgServersHistory
+INSERT INTO [Histroy].[OrgServers]
 SELECT * FROM INSERTED
 END
 GO

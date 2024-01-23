@@ -1,0 +1,2 @@
+﻿CREATE SCHEMA [Project] AUTHORIZATION [dbo]
+GO

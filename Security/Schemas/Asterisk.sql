@@ -1,0 +1,2 @@
+﻿CREATE SCHEMA [Asterisk] AUTHORIZATION [dbo]
+GO

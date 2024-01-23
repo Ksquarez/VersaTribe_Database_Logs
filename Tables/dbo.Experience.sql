@@ -28,11 +28,11 @@ GO
 
 SET QUOTED_IDENTIFIER, ANSI_NULLS ON
 GO
-Create TRIGGER [dbo].[tr_ExperienceActivity]
+CREATE TRIGGER [dbo].[tr_ExperienceActivity]
 ON [dbo].[Experience]
 AFTER INSERT, UPDATE AS
 BEGIN
-INSERT INTO ExperienceHistory
+INSERT INTO [Histroy].[Experience]
 SELECT * FROM INSERTED
 END
 GO

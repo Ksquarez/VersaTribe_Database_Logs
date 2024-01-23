@@ -20,11 +20,11 @@ GO
 
 SET QUOTED_IDENTIFIER, ANSI_NULLS ON
 GO
-Create TRIGGER [dbo].[tr_PersonQualificationActivity]
+CREATE TRIGGER [dbo].[tr_PersonQualificationActivity]
 ON [dbo].[PersonQualification]
 AFTER INSERT, UPDATE AS
 BEGIN
-INSERT INTO PersonQualificationHistory
+INSERT INTO [Histroy].[PersonQualification]
 SELECT * FROM INSERTED
 END
 GO

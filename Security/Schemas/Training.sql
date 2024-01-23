@@ -1,0 +1,2 @@
+﻿CREATE SCHEMA [Training] AUTHORIZATION [dbo]
+GO

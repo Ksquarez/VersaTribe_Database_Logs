@@ -2,8 +2,8 @@
 GO
 CREATE PROCEDURE [dbo].[spTrainingsByUserList]
 
-@Trainer_Id INT
-
+@Trainer_Id INT,
+@Org_Id INT
 AS
 BEGIN TRY
 	SET NOCOUNT ON;
@@ -18,8 +18,8 @@ BEGIN TRY
 		   Training.End_Date,
 		   Training.PersonLimit
     FROM Training 
-	INNER JOIN ORG ON ORG.Org_Id = Training.Org_Id
-	WHERE Training.Trainer_Id = @Trainer_Id
+	INNER JOIN ORG ON ORG.Org_Id = Training.Org_Id 
+	WHERE Training.Trainer_Id = @Trainer_Id And Training.Org_Id = @Org_Id
 	
 
 End TRY

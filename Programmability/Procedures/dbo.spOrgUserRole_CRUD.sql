@@ -21,15 +21,14 @@ BEGIN TRY
         FROM OrgUserRole
         WHERE (@Role_Id IS NULL OR Role_Id = @Role_Id)
             AND (@Person_Id IS NULL OR Person_Id = @Person_Id)
-			AND (@Ext_Id IS NULL OR Ext_Id = @Ext_Id)
             AND (@TStamp IS NULL OR TStamp = @TStamp)
             AND (@TOwner IS NULL OR TOwner = @TOwner)
             AND (@Status IS NULL OR Status = @Status)
     END
     ELSE IF @Action = 'INSERT'
     BEGIN
-        INSERT INTO OrgUserRole (Role_Id, Person_Id, TStamp, TOwner, Status, Ext_Id, IsCaller)
-        VALUES (@Role_Id, @Person_Id, @TStamp, @TOwner, @Status, @Ext_Id, ISNULL(@IsCaller,0))
+        INSERT INTO OrgUserRole (Role_Id, Person_Id, TStamp, TOwner, Status)
+        VALUES (@Role_Id, @Person_Id, @TStamp, @TOwner, @Status)
 
         SELECT *
         FROM OrgUserRole
@@ -40,15 +39,7 @@ BEGIN TRY
         UPDATE OrgUserRole
         SET TStamp = ISNULL(@TStamp, TStamp),
             TOwner = ISNULL(@TOwner, TOwner),
-            Status = ISNULL(@Status, Status),			
-			Ext_Id = CASE When @Ext_Id = -1 THEN NULL
-					 When @Ext_Id IS NULL THEN Ext_Id
-				 	 Else @Ext_Id
-					 END,
-			IsCaller = ISNULL(@IsCaller, IsCaller)
-					
-					--ISNULL(@Ext_Id, Ext_Id),
-			
+            Status = ISNULL(@Status, Status)		
         WHERE Role_Id = @Role_Id AND Person_Id = @Person_Id
 
         SELECT *

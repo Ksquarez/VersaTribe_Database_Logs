@@ -3,6 +3,12 @@
   [Extension_Id] [int] NULL,
   [Srv_Group_Id] [int] NULL,
   [Group_Id] [int] NULL,
+  [TStamp] [datetime] NULL,
+  [TOwner] [nvarchar](256) NULL,
+  [Status] [int] NULL,
+  [Entity_TStamp] [dbo].[Entity_TStamp] NULL,
+  [Service_TStamp] [dbo].[Service_TStamp] NULL,
+  [Service_Response] [dbo].[Service_Response] NULL,
   CONSTRAINT [PK_GroupExtensions_Id] PRIMARY KEY CLUSTERED ([Grp_Ext_Id])
 )
 ON [PRIMARY]

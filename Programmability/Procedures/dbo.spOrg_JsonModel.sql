@@ -44,16 +44,6 @@ BEGIN TRY
 		FOR JSON PATH, INCLUDE_NULL_VALUES
 
     END
-	ELSE IF @Action = 'api/Orgs/{Org_Id}/Servers'
-    BEGIN
-
-        SELECT Servers.Server_Id, Servers.Server_Name, OrgServers.Limit FROM OrgServers
-		INNER JOIN Org  ON Org.Org_Id = OrgServers.Org_Id
-		INNER JOIN Servers ON Servers.Server_Id = OrgServers.Server_Id
-		WHERE Org.Org_Id = @Org_Id
-		FOR JSON PATH, INCLUDE_NULL_VALUES
-
-    END
 	
 	
 END TRY

@@ -16,11 +16,11 @@ GO
 
 SET QUOTED_IDENTIFIER, ANSI_NULLS ON
 GO
-Create TRIGGER [dbo].[tr_HobbyActivity]
+CREATE TRIGGER [dbo].[tr_HobbyActivity]
 ON [dbo].[Hobby]
 AFTER INSERT, UPDATE AS
 BEGIN
-INSERT INTO HobbyHistory
+INSERT INTO [Histroy].[Hobby]
 SELECT * FROM INSERTED
 END
 GO
