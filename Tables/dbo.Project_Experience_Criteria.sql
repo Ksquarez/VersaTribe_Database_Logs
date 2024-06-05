@@ -4,13 +4,19 @@
   [Exp_Id] [int] NOT NULL,
   [Exp_months] [int] NULL,
   [Job_Title] [nvarchar](50) NULL,
+  [Mandatory_Fields] [nvarchar](max) NULL,
   [Status] [int] NOT NULL CONSTRAINT [DF_Project_Experience_Criteria_Status] DEFAULT (0),
   [TStamp] [datetime2] NOT NULL,
   [TOwner] [nvarchar](256) NOT NULL,
-  [Mandatory] [bit] NULL,
   CONSTRAINT [PK_Project_Experience_Criteria] PRIMARY KEY CLUSTERED ([Proj_Exp_Id])
 )
 ON [PRIMARY]
+TEXTIMAGE_ON [PRIMARY]
+GO
+
+CREATE UNIQUE INDEX [IX_Project_Experience_Criteria]
+  ON [dbo].[Project_Experience_Criteria] ([Project_Id], [Exp_Id])
+  ON [PRIMARY]
 GO
 
 ALTER TABLE [dbo].[Project_Experience_Criteria]
@@ -19,8 +25,4 @@ GO
 
 ALTER TABLE [dbo].[Project_Experience_Criteria]
   ADD CONSTRAINT [FK_Project_Experience_Criteria_Experience] FOREIGN KEY ([Exp_Id]) REFERENCES [dbo].[Experience] ([Exp_Id])
-GO
-
-ALTER TABLE [dbo].[Project_Experience_Criteria]
-  ADD CONSTRAINT [FK_Project_Experience_Criteria_Project] FOREIGN KEY ([Project_Id]) REFERENCES [dbo].[Projects] ([Project_Id]) ON DELETE CASCADE ON UPDATE CASCADE
 GO

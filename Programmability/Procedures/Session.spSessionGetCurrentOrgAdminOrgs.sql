@@ -1,12 +1,15 @@
 ﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
 GO
-
 CREATE proc [Session].[spSessionGetCurrentOrgAdminOrgs]
 (
   @Username nvarchar(256)
 )
 As
 BEGIN TRY
+  /*
+    This stored procedure does the following:
+    - Get All the Orgs That Person Belongs To OrgAdmin
+    */
 	SELECT Org.Org_Name,Org.Org_Id FROM Org
 	WHERE Org.OrgAdmin_Id = @Username
 

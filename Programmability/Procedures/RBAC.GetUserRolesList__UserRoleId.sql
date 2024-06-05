@@ -1,0 +1,16 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [RBAC].[GetUserRolesList__UserRoleId]
+(
+@UserRoleId INT
+)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT *
+    FROM RBAC.UserRole UR
+	WHERE UR.UserRoleId = @UserRoleId
+
+END;
+GO

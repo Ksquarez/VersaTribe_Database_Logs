@@ -1,18 +1,44 @@
 ﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
 GO
-CREATE VIEW [Asterisk].[Vw_did_route]
-AS
-SELECT        dbo.did_route.id, dbo.did_route.did, dbo.did_route.description, dbo.did_route.Srv_Id, dbo.did_route.route_type, dbo.did_route.route_type_queue_id, dbo.did_route.route_type_phone_id, dbo.did_route.route_type_ivr_id, 
-                         dbo.did_route.create_date, dbo.did_route.update_date, dbo.did_route.enabled, dbo.did_route.Org_Id, dbo.did_route.call_time_id, dbo.did_route.TStamp, dbo.did_route.TOwner, dbo.did_route.Status, dbo.did_route.Entity_TStamp, 
-                         dbo.did_route.Service_TStamp, dbo.did_route.Service_Response, dbo.Mst_did_route_types.route_type AS Mst_did_route_types__route_type, dbo.Servers.Name, dbo.Servers.IP_Address, dbo.Servers.Server_Domain, 
-                         dbo.Extensions.UserName, dbo.ServerGroups.Queue_Id, dbo.ServerGroups.Queue_Name, dbo.ivr_details.ivr_name, dbo.Org.Org_Name, dbo.Org.OrgAdmin_Id
-FROM            dbo.did_route INNER JOIN
-                         dbo.Servers ON dbo.did_route.Srv_Id = dbo.Servers.Srv_Id INNER JOIN
-                         dbo.Mst_did_route_types ON dbo.did_route.route_type = dbo.Mst_did_route_types.Id INNER JOIN
-                         dbo.Org ON dbo.did_route.Org_Id = dbo.Org.Org_Id LEFT OUTER JOIN
-                         dbo.Extensions ON dbo.Extensions.Extension_Id = dbo.did_route.route_type_phone_id LEFT OUTER JOIN
-                         dbo.ivr_details ON dbo.did_route.route_type_ivr_id = dbo.ivr_details.ivr_id LEFT OUTER JOIN
-                         dbo.ServerGroups ON dbo.did_route.route_type_queue_id = dbo.ServerGroups.Srv_Group_Id
+CREATE VIEW [Asterisk].[Vw_did_route] AS
+SELECT
+    dbo.did_route.id,
+    dbo.did_route.did,
+    dbo.did_route.description,
+    dbo.did_route.Srv_Id,
+    dbo.did_route.route_type,
+    dbo.did_route.route_type_queue_id,
+    dbo.did_route.route_type_phone_id,
+    dbo.did_route.route_type_ivr_id,
+    dbo.did_route.create_date,
+    dbo.did_route.update_date,
+    dbo.did_route.enabled,
+    dbo.did_route.Org_Id,
+    dbo.did_route.call_time_id,
+    dbo.did_route.TStamp,
+    dbo.did_route.TOwner,
+    dbo.did_route.Status,
+    dbo.did_route.Entity_TStamp,
+    dbo.did_route.Service_TStamp,
+    dbo.did_route.Service_Response,
+    dbo.Mst_did_route_types.route_type AS 'Mst_did_route_types__route_type',
+    dbo.Servers.Name,
+    dbo.Servers.IP_Address,
+    dbo.Servers.Server_Domain,
+    dbo.Extensions.UserName,
+    dbo.ServerGroups.Queue_Id,
+    dbo.ServerGroups.Queue_Name,
+    dbo.ivr_details.ivr_name,
+    dbo.Org.Org_Name,
+    dbo.Org.OrgAdmin_Id
+FROM
+    dbo.did_route
+    INNER JOIN dbo.Servers ON dbo.did_route.Srv_Id = dbo.Servers.Srv_Id
+    INNER JOIN dbo.Mst_did_route_types ON dbo.did_route.route_type = dbo.Mst_did_route_types.Id
+    INNER JOIN dbo.Org ON dbo.did_route.Org_Id = dbo.Org.Org_Id
+    LEFT OUTER JOIN dbo.Extensions ON dbo.Extensions.Extension_Id = dbo.did_route.route_type_phone_id
+    LEFT OUTER JOIN dbo.ivr_details ON dbo.did_route.route_type_ivr_id = dbo.ivr_details.ivr_id
+    LEFT OUTER JOIN dbo.ServerGroups ON dbo.did_route.route_type_queue_id = dbo.ServerGroups.Srv_Group_Id
 GO
 
 EXEC sys.sp_addextendedproperty N'MS_DiagramPane1', N'[0E232FF0-B466-11cf-A24F-00AA00A3EFFF, 1.00]

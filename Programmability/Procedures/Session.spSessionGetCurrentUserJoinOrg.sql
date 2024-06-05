@@ -1,6 +1,5 @@
 ﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
 GO
-
 CREATE proc [Session].[spSessionGetCurrentUserJoinOrg]
 (
  @Org_Id INT,
@@ -8,6 +7,12 @@ CREATE proc [Session].[spSessionGetCurrentUserJoinOrg]
 )
 As
 BEGIN TRY
+
+/*
+    This stored procedure does the following:
+    - Get All the Join Orgs InFo Of That Person 
+    - Return OrgPerson Complete Object
+    */
 
 	SELECT OrgPerson.* FROM Org
 	INNER JOIN  OrgPerson ON Org.Org_Id = OrgPerson.Org_Id

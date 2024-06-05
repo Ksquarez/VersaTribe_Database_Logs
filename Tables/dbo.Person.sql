@@ -9,10 +9,12 @@
   [DOB] [date] NULL,
   [TStamp] [datetime2] NOT NULL,
   [TOwner] [nvarchar](256) NOT NULL,
-  [Status] [int] NOT NULL DEFAULT (0),
+  [Status] [int] NOT NULL CONSTRAINT [DF__Person__Status__40058253] DEFAULT (0),
+  [Profile_Pic_Path] [nvarchar](max) NULL,
   CONSTRAINT [PK_Person] PRIMARY KEY CLUSTERED ([Person_Id])
 )
 ON [PRIMARY]
+TEXTIMAGE_ON [PRIMARY]
 GO
 
 CREATE UNIQUE INDEX [TOwner]
@@ -29,7 +31,6 @@ BEGIN
 INSERT INTO [Histroy].[Person]
 SELECT * FROM INSERTED
 END
-
 GO
 
 ALTER TABLE [dbo].[Person]

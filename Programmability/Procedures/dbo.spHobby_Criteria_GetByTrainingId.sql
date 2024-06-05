@@ -5,7 +5,7 @@ CREATE PROC [dbo].[spHobby_Criteria_GetByTrainingId]
 AS
 BEGIN TRY
   SELECT
-        HC.Id AS Hobby_Criteria_Id,
+        HC.Id,
         --HC.Training_Id,
         HC.Hobby_Id,
 		H.Name AS HobbyName,

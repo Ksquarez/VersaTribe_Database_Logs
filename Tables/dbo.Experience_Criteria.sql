@@ -19,10 +19,6 @@ CREATE INDEX [IX_Experience_Criteria]
 GO
 
 ALTER TABLE [dbo].[Experience_Criteria]
-  ADD CONSTRAINT [FK__Experienc__Train__320C68B7] FOREIGN KEY ([Training_Id]) REFERENCES [dbo].[Training] ([Training_Id]) ON DELETE CASCADE ON UPDATE CASCADE
-GO
-
-ALTER TABLE [dbo].[Experience_Criteria]
   ADD CONSTRAINT [FK_Experience_Criteria_AspNetUsers] FOREIGN KEY ([TOwner]) REFERENCES [dbo].[AspNetUsers] ([UserName]) ON UPDATE CASCADE
 GO
 

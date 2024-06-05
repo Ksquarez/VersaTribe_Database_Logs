@@ -10,7 +10,8 @@ BEGIN TRY
 
 	SELECT E.Extension_Id ,
 		   G.*, 
-		   GE.Srv_Group_Id
+		   GE.Srv_Group_Id,
+		   GE.Grp_Ext_Id
 	From GroupExtensions as GE
 	INNER JOIN Groups as G ON G.Group_Id = GE.Group_Id
 	INNER JOIN Extensions as E ON GE.Extension_Id = E.Extension_Id

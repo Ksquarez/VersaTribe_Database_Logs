@@ -41,10 +41,10 @@ BEGIN TRY
         SET 
 		    Org_Id = ISNULL(@Org_Id,Org_Id),
 		    Dept_Name = ISNULL(@Dept_Name,Dept_Name),
-            Parent_dept_Id = ISNULL(@Parent_dept_Id,Parent_dept_Id),
+            Parent_dept_Id = @Parent_dept_Id,
 			TStamp = @TStamp,
 			TOwner = @TOwner,
-			Status = ISNULL(@Status,Status)
+			Status = @Status
         WHERE Dept_Id = @Dept_Id
 
 		SELECT * FROM Department WHERE Dept_Id = @Dept_Id;

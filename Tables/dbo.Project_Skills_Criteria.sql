@@ -12,12 +12,13 @@
 ON [PRIMARY]
 GO
 
-ALTER TABLE [dbo].[Project_Skills_Criteria]
-  ADD CONSTRAINT [FK_Project_Skills_Criteria_AspNetUsers] FOREIGN KEY ([TOwner]) REFERENCES [dbo].[AspNetUsers] ([UserName])
+CREATE UNIQUE INDEX [IX_Project_Skills_Criteria]
+  ON [dbo].[Project_Skills_Criteria] ([Project_Id], [Skill_Id])
+  ON [PRIMARY]
 GO
 
 ALTER TABLE [dbo].[Project_Skills_Criteria]
-  ADD CONSTRAINT [FK_Project_Skills_Criteria_Project] FOREIGN KEY ([Project_Id]) REFERENCES [dbo].[Projects] ([Project_Id]) ON DELETE CASCADE ON UPDATE CASCADE
+  ADD CONSTRAINT [FK_Project_Skills_Criteria_AspNetUsers] FOREIGN KEY ([TOwner]) REFERENCES [dbo].[AspNetUsers] ([UserName])
 GO
 
 ALTER TABLE [dbo].[Project_Skills_Criteria]

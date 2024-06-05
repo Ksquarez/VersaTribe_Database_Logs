@@ -2,8 +2,9 @@
 GO
 CREATE VIEW [Asterisk].[Vw_Servers]
 AS
-SELECT        Srv_Id, Name, IP_Address, CreatedBy, CreatedOn, UpdatedBy, UpdatedOn, TotalRange, StartNum, CurrentNum, EndNum, Group_Start_Num, Group_Current_Num, Group_End_Num, server_trunk_limit, Server_Domain
-FROM            dbo.Servers
+SELECT        Srv_Id, Name, IP_Address, CreatedBy, CreatedOn, UpdatedBy, UpdatedOn, TotalRange, StartNum, CurrentNum, EndNum, Group_Start_Num, Group_Current_Num, Group_End_Num, server_trunk_limit, Server_Domain,
+(SELECT COUNT(*) FROM Extensions WHERE Srv_Id = Servers.Srv_Id) AS 'Extension_Count'
+FROM Servers
 GO
 
 EXEC sys.sp_addextendedproperty N'MS_DiagramPane1', N'[0E232FF0-B466-11cf-A24F-00AA00A3EFFF, 1.00]

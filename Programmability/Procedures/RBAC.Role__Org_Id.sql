@@ -1,0 +1,12 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [RBAC].[Role__Org_Id]
+    @Org_Id INT
+AS
+BEGIN
+    
+	SELECT * FROM RBAC.Role r WHERE 
+	  (@Org_Id IS NULL OR Org_Id = @Org_Id)
+
+END
+GO

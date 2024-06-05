@@ -54,6 +54,13 @@ BEGIN TRY
 		SELECT * FROM Course
         WHERE Cou_Id = @Cou_Id
     END
+	ELSE IF @Action = 'AUTOCOMPLETE'
+    BEGIN
+
+		SELECT * FROM Course
+        WHERE Cou_Name LIKE @Cou_Name + '%';
+
+    END
 
 END TRY
 BEGIN CATCH

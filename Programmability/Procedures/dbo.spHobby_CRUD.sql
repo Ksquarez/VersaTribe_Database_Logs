@@ -1,6 +1,6 @@
 ﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
 GO
-Create Proc [dbo].[spHobby_CRUD]
+CREATE Proc [dbo].[spHobby_CRUD]
 (
   @Hobby_Id INT = NULL,
   @Name NVARCHAR(50) = NULL,
@@ -50,6 +50,13 @@ BEGIN TRY
         WHERE Hobby_Id = @Hobby_Id
 		SELECT * FROM Hobby
         WHERE Hobby_Id = @Hobby_Id
+    END
+	ELSE IF @Action = 'AUTOCOMPLETE(NAME)'
+    BEGIN
+        
+		SELECT * FROM Hobby
+        WHERE Name LIKE @Name + '%';
+
     END
 
 END TRY

@@ -5,7 +5,7 @@ Create PROCEDURE [dbo].[spQualificationCri_GetByTrainingId]
 AS
 BEGIN TRY
     SELECT
-        QC.Id AS Qualification_Criteria_Id,
+        QC.Id,
         QC.Training_Id,
         QC.Cou_Id,
         C.Cou_Name,

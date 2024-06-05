@@ -57,6 +57,14 @@ BEGIN TRY
 		SELECT * FROM Institutes
         WHERE Inst_Id = @Inst_Id
     END
+	ELSE IF @Action = 'AUTOCOMPLETE(Inst_Name)'
+    BEGIN
+
+		SELECT * FROM Institutes
+        WHERE Inst_Name LIKE @Inst_Name + '%';
+
+
+    END
 
 END TRY
 BEGIN CATCH

@@ -2,7 +2,7 @@
   [PerExp_Id] [int] IDENTITY,
   [Person_Id] [int] NOT NULL,
   [Exp_Id] [int] NOT NULL,
-  [Exp_months] [int] NOT NULL,
+  [Exp_months] [int] NULL,
   [Job_Title] [nvarchar](50) NOT NULL,
   [Status] [int] NOT NULL,
   [Start_date] [date] NULL,

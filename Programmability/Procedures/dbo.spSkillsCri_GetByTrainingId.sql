@@ -5,7 +5,7 @@ CREATE PROCEDURE [dbo].[spSkillsCri_GetByTrainingId]
 AS
 BEGIN TRY
     SELECT
-        SC.Id AS Skills_Criteria_Id,
+        SC.Id,
         --SC.Training_Id,
         SC.Skill_Id,
         S.Skill_Name,

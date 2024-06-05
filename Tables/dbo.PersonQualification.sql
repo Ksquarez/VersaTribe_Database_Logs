@@ -3,7 +3,7 @@
   [QI_Id] [int] NOT NULL,
   [Person_Id] [int] NOT NULL,
   [YOP] [date] NULL,
-  [Grade] [varchar](5) NOT NULL,
+  [Grade] [varchar](5) NULL,
   [Status] [int] NOT NULL CONSTRAINT [DF_PersonQualification_Status] DEFAULT (0),
   [TOwner] [nvarchar](256) NOT NULL,
   [TStamp] [datetime2] NOT NULL,

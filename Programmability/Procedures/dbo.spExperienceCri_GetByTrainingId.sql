@@ -5,7 +5,7 @@ Create PROCEDURE [dbo].[spExperienceCri_GetByTrainingId]
 AS
 BEGIN TRY
     SELECT
-        EC.Id AS Experience_Criteria_Id,
+        EC.Id,
         --EC.Training_Id,
         EC.Exp_Id,
 		E.Company_Name,

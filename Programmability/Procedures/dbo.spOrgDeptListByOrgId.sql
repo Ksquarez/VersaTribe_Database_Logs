@@ -20,7 +20,8 @@ SELECT
         Where
             Parent_Department.Dept_Id = Department.Parent_dept_Id
             AND Parent_Department.Org_Id = Org.Org_Id
-    ) AS Parent_dept_Name
+    ) AS Parent_dept_Name,
+    Department.Is_Default
 FROM
     Org
     INNER JOIN Department ON Department.Org_Id = Org.Org_Id

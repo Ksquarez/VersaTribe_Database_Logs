@@ -1,12 +1,25 @@
 ﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
 GO
-CREATE VIEW [Org].[Vw_OrgServers]
-AS
-SELECT        dbo.OrgServers.Org_Id, dbo.OrgServers.Server_Id, dbo.OrgServers.Limit, dbo.OrgServers.Status, dbo.OrgServers.TStamp, dbo.OrgServers.TOwner, dbo.OrgServers.Group_Id, dbo.OrgServers.Is_Prime, dbo.Org.Org_Name, 
-                         dbo.Org.OrgAdmin_Id, dbo.Servers.IP_Address, dbo.Servers.Name, dbo.Servers.Server_Domain
-FROM            dbo.Org INNER JOIN
-                         dbo.OrgServers ON dbo.Org.Org_Id = dbo.OrgServers.Org_Id INNER JOIN
-                         dbo.Servers ON dbo.OrgServers.Server_Id = dbo.Servers.Srv_Id
+CREATE VIEW [Org].[Vw_OrgServers] AS
+SELECT
+    dbo.OrgServers.Org_Id,
+    dbo.OrgServers.Server_Id,
+    dbo.OrgServers.Limit,
+    dbo.OrgServers.Status,
+    dbo.OrgServers.TStamp,
+    dbo.OrgServers.TOwner,
+    dbo.OrgServers.Group_Id,
+    dbo.OrgServers.Is_Prime,
+    dbo.Org.Org_Name,
+    dbo.Org.OrgAdmin_Id,
+    dbo.Servers.IP_Address,
+    dbo.Servers.Name,
+    dbo.Servers.Server_Domain,
+     (SELECT COUNT(*) FROM Extensions WHERE Extensions.Org_Id = OrgServers.Org_Id AND Extensions.Srv_Id = OrgServers.Server_Id) AS 'Extensions_Person_Count'
+FROM
+    dbo.Org
+    INNER JOIN dbo.OrgServers ON dbo.Org.Org_Id = dbo.OrgServers.Org_Id
+    INNER JOIN dbo.Servers ON dbo.OrgServers.Server_Id = dbo.Servers.Srv_Id
 GO
 
 EXEC sys.sp_addextendedproperty N'MS_DiagramPane1', N'[0E232FF0-B466-11cf-A24F-00AA00A3EFFF, 1.00]

@@ -11,14 +11,15 @@
 ON [PRIMARY]
 GO
 
+CREATE UNIQUE INDEX [IX_Project_Hobby_Criteria]
+  ON [dbo].[Project_Hobby_Criteria] ([Project_Id], [Hobby_Id])
+  ON [PRIMARY]
+GO
+
 ALTER TABLE [dbo].[Project_Hobby_Criteria]
   ADD CONSTRAINT [FK_Project_Hobby_Criteria_AspNetUsers] FOREIGN KEY ([TOwner]) REFERENCES [dbo].[AspNetUsers] ([UserName])
 GO
 
 ALTER TABLE [dbo].[Project_Hobby_Criteria]
   ADD CONSTRAINT [FK_Project_Hobby_Criteria_Hobby] FOREIGN KEY ([Hobby_Id]) REFERENCES [dbo].[Hobby] ([Hobby_Id])
-GO
-
-ALTER TABLE [dbo].[Project_Hobby_Criteria]
-  ADD CONSTRAINT [FK_Project_Hobby_Criteria_Project] FOREIGN KEY ([Project_Id]) REFERENCES [dbo].[Projects] ([Project_Id]) ON DELETE CASCADE ON UPDATE CASCADE
 GO

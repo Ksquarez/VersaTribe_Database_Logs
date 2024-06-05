@@ -17,9 +17,5 @@ CREATE UNIQUE INDEX [IDX_Qualification_Criteria]
 GO
 
 ALTER TABLE [dbo].[Qualification_Criteria]
-  ADD CONSTRAINT [FK__Qualifica__Train__36D11DD4] FOREIGN KEY ([Training_Id]) REFERENCES [dbo].[Training] ([Training_Id]) ON DELETE CASCADE ON UPDATE CASCADE
-GO
-
-ALTER TABLE [dbo].[Qualification_Criteria]
   ADD CONSTRAINT [FK_Qualification_Criteria_Course] FOREIGN KEY ([Cou_Id]) REFERENCES [dbo].[Course] ([Cou_Id])
 GO

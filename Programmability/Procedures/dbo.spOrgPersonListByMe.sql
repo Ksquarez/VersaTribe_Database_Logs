@@ -27,7 +27,8 @@ SELECT
 		       END) AS Request_Status_Name,
 			  OrgPerson.Dept_Req,
 			  OrgPerson.TStamp, 
-			  OrgPerson.TOwner
+			  OrgPerson.TOwner,
+			  OrgPerson.Is_Default
 FROM          OrgPerson LEFT JOIN Department ON Department.Dept_Id = OrgPerson.Dept_Id 
 						 INNER JOIN Person ON OrgPerson.Person_Id = Person.Person_Id 
 						 INNER JOIN Org ON Org.Org_Id = OrgPerson.Org_Id

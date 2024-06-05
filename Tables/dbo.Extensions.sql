@@ -24,12 +24,26 @@ CREATE UNIQUE INDEX [IX_Extensions]
   ON [PRIMARY]
 GO
 
+SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE TRIGGER [dbo].[tr_ExtensionActivity]
+ON [dbo].[Extensions]
+AFTER INSERT, UPDATE, DELETE AS
+BEGIN
+INSERT INTO [Histroy].[Asterisk_Extensions]
+SELECT INSERTED.*,GETDATE() FROM INSERTED
+
+INSERT INTO [Histroy].[Asterisk_Extensions]
+SELECT DELETED.*,GETDATE() FROM DELETED
+END
+GO
+
 ALTER TABLE [dbo].[Extensions]
   ADD FOREIGN KEY ([Org_Id]) REFERENCES [dbo].[Org] ([Org_Id])
 GO
 
 ALTER TABLE [dbo].[Extensions]
-  ADD FOREIGN KEY ([Person_Id]) REFERENCES [dbo].[Person] ([Person_Id])
+  ADD CONSTRAINT [FK__Extension__Perso__7A521F79] FOREIGN KEY ([Person_Id]) REFERENCES [dbo].[Person] ([Person_Id])
 GO
 
 ALTER TABLE [dbo].[Extensions]

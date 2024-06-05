@@ -17,10 +17,6 @@ CREATE UNIQUE INDEX [UK_Hobby_Criteria]
 GO
 
 ALTER TABLE [dbo].[Hobby_Criteria]
-  ADD CONSTRAINT [FK__Hobby_Cri__Train__451F3D2B] FOREIGN KEY ([Training_Id]) REFERENCES [dbo].[Training] ([Training_Id]) ON DELETE CASCADE ON UPDATE CASCADE
-GO
-
-ALTER TABLE [dbo].[Hobby_Criteria]
   ADD CONSTRAINT [FK_Hobby_Criteria_AspNetUsers] FOREIGN KEY ([TOwner]) REFERENCES [dbo].[AspNetUsers] ([UserName]) ON UPDATE CASCADE
 GO
 

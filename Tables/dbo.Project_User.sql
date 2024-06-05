@@ -17,17 +17,6 @@ CREATE INDEX [IX_Project_User]
   ON [PRIMARY]
 GO
 
-SET QUOTED_IDENTIFIER, ANSI_NULLS ON
-GO
-CREATE TRIGGER [dbo].[tr_Project_UserActivity]
-ON [dbo].[Project_User]
-AFTER INSERT, UPDATE, DELETE AS
-BEGIN
-INSERT INTO [Histroy].[Project_User]
-SELECT * FROM INSERTED
-END
-GO
-
 ALTER TABLE [dbo].[Project_User]
   ADD CONSTRAINT [FK_Project_User_AspNetUsers] FOREIGN KEY ([TOwner]) REFERENCES [dbo].[AspNetUsers] ([UserName]) ON UPDATE CASCADE
 GO

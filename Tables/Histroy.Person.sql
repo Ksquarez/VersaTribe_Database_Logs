@@ -9,7 +9,9 @@
   [DOB] [nvarchar](4000) NULL,
   [TStamp] [nvarchar](4000) NULL,
   [TOwner] [nvarchar](4000) NULL,
-  [Status] [nvarchar](4000) NULL
+  [Status] [nvarchar](4000) NULL,
+  [Profile_Pic_Path] [nvarchar](max) NULL
 )
 ON [PRIMARY]
+TEXTIMAGE_ON [PRIMARY]
 GO

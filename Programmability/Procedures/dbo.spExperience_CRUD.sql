@@ -62,6 +62,20 @@ BEGIN TRY
 		SELECT * FROM Experience
         WHERE Exp_Id = @Exp_Id;
     END
+	ELSE IF @Action = 'AUTOCOMPLETE(Company_Name)'
+    BEGIN
+
+		SELECT * FROM Experience
+        WHERE Company_Name LIKE @Company_Name + '%';
+
+    END
+	ELSE IF @Action = 'AUTOCOMPLETE(Industry_Field_Name)'
+    BEGIN
+
+		SELECT * FROM Experience
+        WHERE Industry_Field_Name LIKE @Industry_Field_Name + '%';
+
+    END
 
 END TRY
 BEGIN CATCH

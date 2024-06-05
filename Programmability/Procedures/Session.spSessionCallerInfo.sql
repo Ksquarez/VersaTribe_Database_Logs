@@ -1,6 +1,5 @@
 ﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
 GO
-
 CREATE proc [Session].[spSessionCallerInfo]
 (
   @Org_Id INT,
@@ -8,9 +7,12 @@ CREATE proc [Session].[spSessionCallerInfo]
 )
 As
 BEGIN TRY
-
+   /*
+    This stored procedure does the following:
+    - Get Person Caller Info In Org
+    */
 	SELECT VW_Model.Org_Id, VW_Model.Org_Name, VW_Model.IsCaller, Servers.IP_Address, VW_Model.Extension_Srv_Id, 
-	VW_Model.Secret, Servers.Server_Domain
+	VW_Model.Secret, Servers.Server_Domain, VW_Model.Extension_Id, VW_Model.UserName
 	FROM Org.Vw_OrgPerson_Calling_Users AS VW_Model
 	LEFT JOIN Servers ON Servers.Srv_Id = VW_Model.Srv_Id
 	WHERE  VW_Model.Org_Id = @Org_Id AND VW_Model.PersonEmail = @Username

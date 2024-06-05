@@ -1,6 +1,6 @@
 ﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
 GO
-Create Proc [dbo].[spSkills_CRUD]
+CREATE Proc [dbo].[spSkills_CRUD]
 (
   @Skill_Id INT = NULL,
   @Skill_Field NVARCHAR(50) = NULL,
@@ -51,6 +51,12 @@ BEGIN TRY
         WHERE Skill_Id = @Skill_Id
 		SELECT * FROM Skills
         WHERE Skill_Id = @Skill_Id
+    END
+	ELSE IF @Action = 'AUTOCOMPLETE(Skill_Name)'
+    BEGIN
+        
+		SELECT * FROM Skills
+        WHERE Skill_Name LIKE @Skill_Name + '%';
     END
 
 END TRY

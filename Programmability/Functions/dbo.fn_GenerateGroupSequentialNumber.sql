@@ -4,7 +4,7 @@ CREATE FUNCTION [dbo].[fn_GenerateGroupSequentialNumber](@Srv_Id INT)
 RETURNS NVARCHAR(MAX)
 AS
 BEGIN
-
+    DECLARE @uniqueNumber NVARCHAR(13);
     DECLARE @startNum NVARCHAR(MAX);
 
     -- Get the initial value from the Servers table
@@ -13,13 +13,18 @@ BEGIN
     DECLARE @timestamp NVARCHAR(50);
 
 	 -- Get current timestamp as a string
-    SET @timestamp = CONVERT(NVARCHAR(50), GETDATE(), 112) + REPLACE(CONVERT(NVARCHAR(50), GETDATE(), 108), ':', '');
+    SET @timestamp =  FORMAT(GETUTCDATE(), 'ddMMyymmss');
 
 
-	-- Combine prefix, timestamp, and random number
-    DECLARE @uniqueNumber NVARCHAR(MAX) = @startNum + @timestamp;
+    -- Combine prefix, timestamp
+    SET @uniqueNumber = @startNum + @timestamp;
+
+    -- Adjust if the length is shorter than 13 characters
+    SET @uniqueNumber = @uniqueNumber + REPLICATE('0', 13 - LEN(@uniqueNumber));
+
+    -- Truncate if the combined string exceeds 13 characters
+    SET @uniqueNumber = LEFT(@uniqueNumber, 13);
 
 	RETURN @uniqueNumber;
-
 END;
 GO
