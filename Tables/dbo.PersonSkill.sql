@@ -16,17 +16,6 @@ CREATE UNIQUE INDEX [IX_PersonSkill]
   ON [PRIMARY]
 GO
 
-SET QUOTED_IDENTIFIER, ANSI_NULLS ON
-GO
-CREATE TRIGGER [dbo].[tr_PersonSkillActivity]
-ON [dbo].[PersonSkill]
-AFTER INSERT, UPDATE AS
-BEGIN
-INSERT INTO [Histroy].[PersonSkill]
-SELECT * FROM INSERTED
-END
-GO
-
 ALTER TABLE [dbo].[PersonSkill]
   ADD CONSTRAINT [FK_PersonSkill_AspNetUsers] FOREIGN KEY ([TOwner]) REFERENCES [dbo].[AspNetUsers] ([UserName]) ON UPDATE CASCADE
 GO

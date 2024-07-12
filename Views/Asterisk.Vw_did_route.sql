@@ -18,22 +18,24 @@ SELECT
     dbo.did_route.TStamp,
     dbo.did_route.TOwner,
     dbo.did_route.Status,
-    dbo.did_route.Entity_TStamp,
-    dbo.did_route.Service_TStamp,
-    dbo.did_route.Service_Response,
+    dbo.did_route.Active,
+    --dbo.did_route.Entity_TStamp,
+    --dbo.did_route.Service_TStamp,
+    --dbo.did_route.Service_Response,
     dbo.Mst_did_route_types.route_type AS 'Mst_did_route_types__route_type',
-    dbo.Servers.Name,
-    dbo.Servers.IP_Address,
-    dbo.Servers.Server_Domain,
+    --dbo.Servers.Name,
+    --dbo.Servers.IP_Address,
+    --dbo.Servers.Server_Domain,
     dbo.Extensions.UserName,
     dbo.ServerGroups.Queue_Id,
     dbo.ServerGroups.Queue_Name,
     dbo.ivr_details.ivr_name,
     dbo.Org.Org_Name,
-    dbo.Org.OrgAdmin_Id
+    dbo.Org.OrgAdmin_Id,
+    dbo.did_route.context_Id
 FROM
     dbo.did_route
-    INNER JOIN dbo.Servers ON dbo.did_route.Srv_Id = dbo.Servers.Srv_Id
+    INNER JOIN dbo.context ON dbo.did_route.context_Id = dbo.context.Id
     INNER JOIN dbo.Mst_did_route_types ON dbo.did_route.route_type = dbo.Mst_did_route_types.Id
     INNER JOIN dbo.Org ON dbo.did_route.Org_Id = dbo.Org.Org_Id
     LEFT OUTER JOIN dbo.Extensions ON dbo.Extensions.Extension_Id = dbo.did_route.route_type_phone_id

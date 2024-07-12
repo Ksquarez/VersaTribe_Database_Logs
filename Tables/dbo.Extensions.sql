@@ -9,10 +9,9 @@
   [Transport] [nvarchar](max) NULL,
   [TStamp] [datetime] NULL,
   [TOwner] [nvarchar](256) NULL,
-  [Service_TStamp] [dbo].[Service_TStamp] NULL,
-  [Service_Response] [dbo].[Service_Response] NULL,
   [Status] [int] NULL,
-  [Entity_TStamp] [dbo].[Entity_TStamp] NULL,
+  [Active] [bit] NULL,
+  [context_Id] [int] NULL,
   CONSTRAINT [PK_Extensions] PRIMARY KEY CLUSTERED ([Extension_Id])
 )
 ON [PRIMARY]
@@ -36,6 +35,10 @@ SELECT INSERTED.*,GETDATE() FROM INSERTED
 INSERT INTO [Histroy].[Asterisk_Extensions]
 SELECT DELETED.*,GETDATE() FROM DELETED
 END
+GO
+
+ALTER TABLE [dbo].[Extensions]
+  ADD FOREIGN KEY ([context_Id]) REFERENCES [dbo].[context] ([Id])
 GO
 
 ALTER TABLE [dbo].[Extensions]

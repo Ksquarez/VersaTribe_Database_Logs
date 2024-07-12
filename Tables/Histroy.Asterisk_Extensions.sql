@@ -9,10 +9,9 @@
   [Transport] [nvarchar](max) NULL,
   [TStamp] [datetime] NULL,
   [TOwner] [nvarchar](256) NULL,
-  [Service_TStamp] [dbo].[Service_TStamp] NULL,
-  [Service_Response] [dbo].[Service_Response] NULL,
   [Status] [int] NULL,
-  [Entity_TStamp] [dbo].[Entity_TStamp] NULL,
+  [Active] [bit] NULL,
+  [context_Id] [int] NULL,
   [DateOrder] [datetime] NULL
 )
 ON [PRIMARY]

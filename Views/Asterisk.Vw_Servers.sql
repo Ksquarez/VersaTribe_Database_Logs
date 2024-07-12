@@ -2,8 +2,7 @@
 GO
 CREATE VIEW [Asterisk].[Vw_Servers]
 AS
-SELECT        Srv_Id, Name, IP_Address, CreatedBy, CreatedOn, UpdatedBy, UpdatedOn, TotalRange, StartNum, CurrentNum, EndNum, Group_Start_Num, Group_Current_Num, Group_End_Num, server_trunk_limit, Server_Domain,
-(SELECT COUNT(*) FROM Extensions WHERE Srv_Id = Servers.Srv_Id) AS 'Extension_Count'
+SELECT       Servers.*
 FROM Servers
 GO
 

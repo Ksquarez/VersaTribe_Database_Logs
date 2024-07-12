@@ -11,30 +11,16 @@
 ON [PRIMARY]
 GO
 
-CREATE UNIQUE INDEX [IX_Experience]
-  ON [dbo].[Experience] ([Company_Name], [Industry_Field_Name])
-  ON [PRIMARY]
-GO
-
-CREATE INDEX [IX_Experience_1]
+CREATE UNIQUE INDEX [IX_Experience_Company_Name]
   ON [dbo].[Experience] ([Company_Name])
+  WHERE ([Company_Name] IS NOT NULL)
   ON [PRIMARY]
 GO
 
-CREATE INDEX [IX_Experience_2]
+CREATE UNIQUE INDEX [IX_Experience_Industry_Field_Name]
   ON [dbo].[Experience] ([Industry_Field_Name])
+  WHERE ([Industry_Field_Name] IS NOT NULL)
   ON [PRIMARY]
-GO
-
-SET QUOTED_IDENTIFIER, ANSI_NULLS ON
-GO
-CREATE TRIGGER [dbo].[tr_ExperienceActivity]
-ON [dbo].[Experience]
-AFTER INSERT, UPDATE AS
-BEGIN
-INSERT INTO [Histroy].[Experience]
-SELECT * FROM INSERTED
-END
 GO
 
 ALTER TABLE [dbo].[Experience]

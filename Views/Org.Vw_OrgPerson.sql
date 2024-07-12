@@ -5,7 +5,9 @@ AS
 SELECT        dbo.Org.Org_Name, dbo.Person.FirstName, dbo.Person.LastName, dbo.Department.Dept_Name, 
                          (CASE WHEN OrgPerson.Request_Status = 1 THEN 'APPROVED' WHEN OrgPerson.Request_Status = 0 THEN 'REQUESTED' WHEN OrgPerson.Request_Status = - 1 THEN 'REJECTED' WHEN OrgPerson.Request_Status = - 2 THEN
                           'REMOVED' ELSE NULL END) AS Request_Status_Str, dbo.Org.OrgAdmin_Id, dbo.OrgPerson.Person_Id, dbo.OrgPerson.Org_Id, dbo.OrgPerson.Dept_Id, dbo.OrgPerson.Status, dbo.OrgPerson.TStamp, dbo.OrgPerson.TOwner, 
-                         dbo.OrgPerson.Request_Status, dbo.OrgPerson.Dept_Req, dbo.OrgPerson.IsCaller, dbo.OrgPerson.Extension_Id, dbo.OrgPerson.Server_Id, dbo.OrgPerson.Is_Default, dbo.Person.TOwner AS PersonEmail
+                         dbo.OrgPerson.Request_Status, dbo.OrgPerson.Dept_Req, dbo.OrgPerson.IsCaller, dbo.OrgPerson.Extension_Id, dbo.OrgPerson.Server_Id, dbo.OrgPerson.Is_Default, dbo.Person.TOwner AS PersonEmail,
+                          (SELECT Ex.Active  FROM Extensions Ex WHERE Ex.Person_Id = OrgPerson.Person_Id AND Ex.Org_Id = OrgPerson.Org_Id) AS 'Active'
+                         
 FROM            dbo.OrgPerson INNER JOIN
                          dbo.Person ON dbo.Person.Person_Id = dbo.OrgPerson.Person_Id INNER JOIN
                          dbo.Org ON dbo.Org.Org_Id = dbo.OrgPerson.Org_Id INNER JOIN

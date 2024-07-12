@@ -4,7 +4,9 @@ CREATE VIEW [Org].[Vw_OrgInfo]
 AS
 SELECT        dbo.OrgInfo.Org_Id, dbo.OrgInfo.About_org, dbo.OrgInfo.City, dbo.OrgInfo.Country, dbo.OrgInfo.Contact_email, dbo.OrgInfo.Contact_number, dbo.OrgInfo.TStamp, dbo.OrgInfo.TOwner, dbo.OrgInfo.Status, dbo.Org.Org_Name, 
                          dbo.Org.OrgAdmin_Id,
-                         (SELECT ISNULL(SUM(Limit), 0) FROM OrgServers WHERE Org_Id = Org.Org_Id) AS 'Limit'
+                             (SELECT        ISNULL(SUM(Limit), 0) AS Expr1
+                               FROM            dbo.OrgServers
+                               WHERE        (Org_Id = dbo.Org.Org_Id)) AS Limit, dbo.OrgInfo.Org_Pic
 FROM            dbo.OrgInfo INNER JOIN
                          dbo.Org ON dbo.OrgInfo.Org_Id = dbo.Org.Org_Id
 GO
@@ -84,7 +86,7 @@ Begin DesignProperties =
             Begin Extent = 
                Top = 6
                Left = 454
-               Bottom = 136
+               Bottom = 271
                Right = 632
             End
             DisplayFlags = 280

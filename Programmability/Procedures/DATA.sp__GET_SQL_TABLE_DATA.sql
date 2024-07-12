@@ -36,11 +36,6 @@ BEGIN TRY
     EXEC sp_executesql @SqlQuery;
 END TRY
 BEGIN CATCH
-    -- Handle errors
-    PRINT 'Error Message: ' + ERROR_MESSAGE();
-    PRINT 'Error Number: ' + CAST(ERROR_NUMBER() AS NVARCHAR(10));
-    PRINT 'Error Severity: ' + CAST(ERROR_SEVERITY() AS NVARCHAR(10));
-    PRINT 'Error State: ' + CAST(ERROR_STATE() AS NVARCHAR(10));
-    PRINT 'Error Line: ' + CAST(ERROR_LINE() AS NVARCHAR(10));
+   EXECUTE [dbo].[uspLogError];
 END CATCH
 GO

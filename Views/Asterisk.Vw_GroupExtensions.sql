@@ -2,9 +2,24 @@
 GO
 CREATE VIEW [Asterisk].[Vw_GroupExtensions]
 AS
-SELECT        dbo.GroupExtensions.Grp_Ext_Id, dbo.GroupExtensions.Extension_Id, dbo.GroupExtensions.Srv_Group_Id, dbo.GroupExtensions.Group_Id, dbo.GroupExtensions.TStamp, dbo.GroupExtensions.TOwner, 
-                         dbo.GroupExtensions.Status, dbo.GroupExtensions.Entity_TStamp, dbo.GroupExtensions.Service_TStamp, dbo.GroupExtensions.Service_Response, dbo.Groups.Group_Name, dbo.Groups.Strategy, dbo.Org.Org_Name, 
-                         dbo.Org.OrgAdmin_Id, dbo.Person.FirstName, dbo.Person.LastName, dbo.Person.TOwner AS PersonEmail
+SELECT       dbo.GroupExtensions.Grp_Ext_Id, 
+             dbo.GroupExtensions.Extension_Id, 
+             dbo.GroupExtensions.Srv_Group_Id, 
+             dbo.GroupExtensions.Group_Id, 
+             dbo.GroupExtensions.TStamp, 
+             dbo.GroupExtensions.TOwner, 
+             dbo.GroupExtensions.Status, 
+             dbo.GroupExtensions.Active,
+                         --dbo.GroupExtensions.Entity_TStamp, 
+                         --dbo.GroupExtensions.Service_TStamp, 
+                         --dbo.GroupExtensions.Service_Response, 
+                         dbo.Groups.Group_Name, 
+                         dbo.Groups.Strategy, 
+                         dbo.Org.Org_Name, 
+                         dbo.Org.OrgAdmin_Id, 
+                         dbo.Person.FirstName, 
+                         dbo.Person.LastName, 
+                         dbo.Person.TOwner AS PersonEmail
 FROM            dbo.Extensions INNER JOIN
                          dbo.GroupExtensions ON dbo.Extensions.Extension_Id = dbo.GroupExtensions.Extension_Id INNER JOIN
                          dbo.Groups ON dbo.GroupExtensions.Group_Id = dbo.Groups.Group_Id INNER JOIN

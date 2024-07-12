@@ -14,17 +14,6 @@ CREATE UNIQUE INDEX [IX_CourseType]
   ON [PRIMARY]
 GO
 
-SET QUOTED_IDENTIFIER, ANSI_NULLS ON
-GO
-CREATE TRIGGER [dbo].[tr_CourseTypeActivity]
-ON [dbo].[CourseType]
-AFTER INSERT, UPDATE AS
-BEGIN
-INSERT INTO [Histroy].[CourseType]
-SELECT * FROM INSERTED
-END
-GO
-
 ALTER TABLE [dbo].[CourseType]
   ADD CONSTRAINT [FK_CourseType_AspNetUsers] FOREIGN KEY ([TOwner]) REFERENCES [dbo].[AspNetUsers] ([UserName]) ON UPDATE CASCADE
 GO

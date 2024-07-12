@@ -1,13 +1,12 @@
 ﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
 GO
-
-Create PROCEDURE [Recruitment].[sp_Candidate_Skills_CRUD]
+CREATE PROCEDURE [Recruitment].[sp_Candidate_Skills_CRUD]
 (
   @Candidate_Skills_Id INT = NULL,
   @Candidate_Id INT = NULL,
   @Skill_Id INT = NULL,
   @Experience TINYINT = NULL,
-  @Mandatory BIT = NULL,
+  --@Mandatory BIT = NULL,
   @Status INT = NULL,
   @TStamp DATETIME2(7) = NULL,
   @TOwner NVARCHAR(256) = NULL,
@@ -25,15 +24,15 @@ BEGIN TRY
             AND (@Candidate_Id IS NULL OR Candidate_Id = @Candidate_Id)
             AND (@Skill_Id IS NULL OR Skill_Id = @Skill_Id)
             AND (@Experience IS NULL OR Experience = @Experience)
-            AND (@Mandatory IS NULL OR Mandatory = @Mandatory)
+            --AND (@Mandatory IS NULL OR Mandatory = @Mandatory)
             AND (@Status IS NULL OR Status = @Status)
             AND (@TStamp IS NULL OR TStamp = @TStamp)
             AND (@TOwner IS NULL OR TOwner = @TOwner)
     END
     ELSE IF @Action = 'INSERT'
     BEGIN
-        INSERT INTO Recruitment.Candidate_Skills (Candidate_Id, Skill_Id, Experience, Mandatory, Status, TStamp, TOwner)
-        VALUES (@Candidate_Id, @Skill_Id, @Experience, @Mandatory, @Status, @TStamp, @TOwner)
+        INSERT INTO Recruitment.Candidate_Skills (Candidate_Id, Skill_Id, Experience, Status, TStamp, TOwner)
+        VALUES (@Candidate_Id, @Skill_Id, @Experience, @Status, @TStamp, @TOwner)
 
         SELECT * FROM Recruitment.Candidate_Skills WHERE Candidate_Skills_Id = SCOPE_IDENTITY();
     END
@@ -43,7 +42,7 @@ BEGIN TRY
         SET Candidate_Id = ISNULL(@Candidate_Id, Candidate_Id),
             Skill_Id = ISNULL(@Skill_Id, Skill_Id),
             Experience = ISNULL(@Experience, Experience),
-            Mandatory = ISNULL(@Mandatory, Mandatory),
+            --Mandatory = ISNULL(@Mandatory, Mandatory),
             Status = ISNULL(@Status, Status),
             TStamp = @TStamp,
             TOwner = @TOwner

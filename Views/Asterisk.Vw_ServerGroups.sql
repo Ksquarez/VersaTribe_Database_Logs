@@ -1,12 +1,28 @@
 ﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
 GO
-CREATE VIEW [Asterisk].[Vw_ServerGroups]
-AS
-SELECT        dbo.ServerGroups.Srv_Group_Id, dbo.ServerGroups.Srv_Id, dbo.ServerGroups.Group_Id, dbo.ServerGroups.Queue_Id, dbo.ServerGroups.Queue_Name, dbo.ServerGroups.Status, dbo.ServerGroups.Entity_TStamp, 
-                         dbo.ServerGroups.Service_TStamp, dbo.ServerGroups.Service_Response, dbo.Servers.Name, dbo.Servers.IP_Address, dbo.Servers.Server_Domain, dbo.Groups.Group_Name, dbo.Groups.Strategy, dbo.Groups.TimeOut
-FROM            dbo.Groups INNER JOIN
-                         dbo.ServerGroups ON dbo.Groups.Group_Id = dbo.ServerGroups.Group_Id INNER JOIN
-                         dbo.Servers ON dbo.ServerGroups.Srv_Id = dbo.Servers.Srv_Id
+CREATE VIEW [Asterisk].[Vw_ServerGroups] AS
+SELECT
+    dbo.ServerGroups.Srv_Group_Id,
+    --dbo.ServerGroups.Srv_Id,
+    dbo.ServerGroups.Group_Id,
+    dbo.ServerGroups.Queue_Id,
+    dbo.ServerGroups.Queue_Name,
+    dbo.ServerGroups.Status,
+    dbo.ServerGroups.Active,
+    dbo.ServerGroups.context_Id,
+    --dbo.ServerGroups.Entity_TStamp,
+    --dbo.ServerGroups.Service_TStamp,
+    --dbo.ServerGroups.Service_Response,
+    dbo.context.ContextName,
+    --dbo.Servers.IP_Address,
+    --dbo.Servers.Server_Domain,
+    dbo.Groups.Group_Name,
+    dbo.Groups.Strategy,
+    dbo.Groups.TimeOut
+FROM
+    dbo.Groups
+    INNER JOIN dbo.ServerGroups ON dbo.Groups.Group_Id = dbo.ServerGroups.Group_Id
+    INNER JOIN dbo.context ON dbo.ServerGroups.context_Id = dbo.context.Id
 GO
 
 EXEC sys.sp_addextendedproperty N'MS_DiagramPane1', N'[0E232FF0-B466-11cf-A24F-00AA00A3EFFF, 1.00]

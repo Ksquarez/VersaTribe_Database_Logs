@@ -12,15 +12,14 @@
 ON [PRIMARY]
 GO
 
-SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+CREATE UNIQUE INDEX [UK_OrgServers_Org_Id]
+  ON [dbo].[OrgServers] ([Org_Id])
+  ON [PRIMARY]
 GO
-CREATE TRIGGER [dbo].[tr_OrgServersActivity]
-ON [dbo].[OrgServers]
-AFTER INSERT, UPDATE, DELETE AS
-BEGIN
-INSERT INTO [Histroy].[OrgServers]
-SELECT * FROM INSERTED
-END
+
+CREATE UNIQUE INDEX [UK_OrgServers_Server_Id]
+  ON [dbo].[OrgServers] ([Server_Id])
+  ON [PRIMARY]
 GO
 
 ALTER TABLE [dbo].[OrgServers]

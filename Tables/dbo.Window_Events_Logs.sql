@@ -9,6 +9,7 @@
   [TOwner] [nvarchar](256) NULL,
   [Status] [int] NULL DEFAULT (0),
   [Owner] [nvarchar](256) NULL,
+  [Login_Date_Time] [datetime2] NULL,
   CONSTRAINT [PK_Window_Events_Logs_Id] PRIMARY KEY CLUSTERED ([Id])
 )
 ON [PRIMARY]

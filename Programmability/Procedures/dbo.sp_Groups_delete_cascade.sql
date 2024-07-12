@@ -8,12 +8,11 @@ BEGIN TRY
 	
 	BEGIN TRANSACTION;
 	
+	DELETE FROM ServerGroups
+    WHERE [Group_Id] = @Group_Id;
+	
     DELETE FROM Groups
     WHERE Group_Id = @Group_Id
-		
-
-    DELETE FROM ServerGroups
-    WHERE [Group_Id] = @Group_Id;
     
     COMMIT;
 

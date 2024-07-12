@@ -2,8 +2,20 @@
 GO
 CREATE VIEW [Asterisk].[Vw_Groups]
 AS
-SELECT        dbo.Groups.Group_Id, dbo.Groups.Org_Id, dbo.Groups.Group_Name, dbo.Groups.Strategy, dbo.Groups.TimeOut, dbo.Groups.IsDefault, dbo.Groups.TStamp, dbo.Groups.TOwner, dbo.Groups.Status, dbo.Groups.Entity_TStamp, 
-                         dbo.Groups.Service_TStamp, dbo.Groups.Service_Response, dbo.Org.Org_Name, dbo.Org.OrgAdmin_Id
+SELECT        dbo.Groups.Group_Id, 
+              dbo.Groups.Org_Id, 
+              dbo.Groups.Group_Name, 
+              dbo.Groups.Strategy, 
+              dbo.Groups.TimeOut,
+              dbo.Groups.IsDefault, 
+              dbo.Groups.TStamp, 
+              dbo.Groups.TOwner, 
+              dbo.Groups.Status, 
+              dbo.Groups.Active,
+                         --dbo.Groups.Entity_TStamp, 
+                         --dbo.Groups.Service_TStamp, 
+                         --bo.Groups.Service_Response, 
+                         dbo.Org.Org_Name, dbo.Org.OrgAdmin_Id
 FROM            dbo.Groups INNER JOIN
                          dbo.Org ON dbo.Groups.Org_Id = dbo.Org.Org_Id
 GO

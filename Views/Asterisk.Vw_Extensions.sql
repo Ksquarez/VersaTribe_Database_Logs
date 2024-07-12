@@ -1,16 +1,47 @@
 ﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
 GO
-CREATE VIEW [Asterisk].[Vw_Extensions]
-AS
-SELECT        dbo.Person.FirstName, dbo.Person.LastName, dbo.Person.TOwner AS PersonEmail, dbo.Org.Org_Name, dbo.Org.OrgAdmin_Id, dbo.Extensions.Extension_Id, dbo.Extensions.Org_Id, dbo.Extensions.Person_Id, 
-                         dbo.Extensions.Extension_Srv_Id, dbo.Extensions.Srv_Id, dbo.Extensions.UserName, dbo.Extensions.Secret, dbo.Extensions.Transport, dbo.Extensions.TStamp, dbo.Extensions.TOwner, dbo.Extensions.Service_TStamp, 
-                         dbo.Extensions.Service_Response, dbo.Extensions.Status, dbo.Extensions.Entity_TStamp, dbo.OrgPerson.Dept_Id, dbo.OrgPerson.IsCaller, dbo.OrgPerson.Is_Default, 
-                         (CASE WHEN OrgPerson.Request_Status = 1 THEN 'APPROVED' WHEN OrgPerson.Request_Status = 0 THEN 'REQUESTED' WHEN OrgPerson.Request_Status = - 1 THEN 'REJECTED' WHEN OrgPerson.Request_Status = - 2 THEN
-                          'REMOVED' ELSE NULL END) AS Request_Status_Str, dbo.OrgPerson.Request_Status
-FROM            dbo.Extensions INNER JOIN
-                         dbo.Org ON dbo.Extensions.Org_Id = dbo.Org.Org_Id INNER JOIN
-                         dbo.OrgPerson ON dbo.Org.Org_Id = dbo.OrgPerson.Org_Id INNER JOIN
-                         dbo.Person ON dbo.Extensions.Person_Id = dbo.Person.Person_Id AND dbo.OrgPerson.Person_Id = dbo.Person.Person_Id
+CREATE VIEW [Asterisk].[Vw_Extensions] AS
+SELECT
+    dbo.Person.FirstName,
+    dbo.Person.LastName,
+    dbo.Person.TOwner AS PersonEmail,
+    dbo.Org.Org_Name,
+    dbo.Org.OrgAdmin_Id,
+    dbo.Extensions.Extension_Id,
+    dbo.Extensions.Org_Id,
+    dbo.Extensions.Person_Id,
+    dbo.Extensions.Extension_Srv_Id,
+    dbo.Extensions.Srv_Id,
+    dbo.Extensions.UserName,
+    dbo.Extensions.Secret,
+    dbo.Extensions.Transport,
+    dbo.Extensions.TStamp,
+    dbo.Extensions.TOwner,
+    --dbo.Extensions.Service_TStamp,
+    --dbo.Extensions.Service_Response,
+    dbo.Extensions.Status,
+    --dbo.Extensions.Entity_TStamp,
+    dbo.OrgPerson.Dept_Id,
+    dbo.OrgPerson.IsCaller,
+    dbo.OrgPerson.Is_Default,
+    (
+        CASE
+            WHEN OrgPerson.Request_Status = 1 THEN 'APPROVED'
+            WHEN OrgPerson.Request_Status = 0 THEN 'REQUESTED'
+            WHEN OrgPerson.Request_Status = - 1 THEN 'REJECTED'
+            WHEN OrgPerson.Request_Status = - 2 THEN 'REMOVED'
+            ELSE NULL
+        END
+    ) AS Request_Status_Str,
+    dbo.OrgPerson.Request_Status,
+    Active,
+    dbo.Extensions.context_Id
+FROM
+    dbo.Extensions
+    INNER JOIN dbo.Org ON dbo.Extensions.Org_Id = dbo.Org.Org_Id
+    INNER JOIN dbo.OrgPerson ON dbo.Org.Org_Id = dbo.OrgPerson.Org_Id
+    INNER JOIN dbo.Person ON dbo.Extensions.Person_Id = dbo.Person.Person_Id
+    AND dbo.OrgPerson.Person_Id = dbo.Person.Person_Id
 GO
 
 EXEC sys.sp_addextendedproperty N'MS_DiagramPane1', N'[0E232FF0-B466-11cf-A24F-00AA00A3EFFF, 1.00]

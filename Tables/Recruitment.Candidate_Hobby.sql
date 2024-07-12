@@ -2,7 +2,6 @@
   [Candidate_Hobby_Id] [int] IDENTITY,
   [Candidate_Id] [int] NULL,
   [Hobby_Id] [int] NULL,
-  [Mandatory] [bit] NULL,
   [Status] [int] NOT NULL CONSTRAINT [DF_Candidate_Hobby_Status] DEFAULT (0),
   [TStamp] [datetime2] NOT NULL,
   [TOwner] [nvarchar](256) NOT NULL,

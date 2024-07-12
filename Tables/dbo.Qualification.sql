@@ -15,17 +15,6 @@ CREATE UNIQUE INDEX [IX_Qualification]
   ON [PRIMARY]
 GO
 
-SET QUOTED_IDENTIFIER, ANSI_NULLS ON
-GO
-CREATE TRIGGER [dbo].[tr_QualificationActivity]
-ON [dbo].[Qualification]
-AFTER INSERT, UPDATE AS
-BEGIN
-INSERT INTO [Histroy].[Qualification]
-SELECT * FROM INSERTED
-END
-GO
-
 ALTER TABLE [dbo].[Qualification]
   ADD CONSTRAINT [FK_Qualification_Course] FOREIGN KEY ([Cou_Id]) REFERENCES [dbo].[Course] ([Cou_Id])
 GO

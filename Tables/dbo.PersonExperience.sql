@@ -3,7 +3,7 @@
   [Person_Id] [int] NOT NULL,
   [Exp_Id] [int] NOT NULL,
   [Exp_months] [int] NULL,
-  [Job_Title] [nvarchar](50) NOT NULL,
+  [Job_Title] [nvarchar](50) NULL,
   [Status] [int] NOT NULL,
   [Start_date] [date] NULL,
   [End_Date] [date] NULL,
@@ -17,17 +17,6 @@ GO
 CREATE UNIQUE INDEX [IX_PersonExperience]
   ON [dbo].[PersonExperience] ([Person_Id], [Exp_Id], [Start_date], [End_Date])
   ON [PRIMARY]
-GO
-
-SET QUOTED_IDENTIFIER, ANSI_NULLS ON
-GO
-CREATE TRIGGER [dbo].[tr_PersonExperienceActivity]
-ON [dbo].[PersonExperience]
-AFTER INSERT, UPDATE AS
-BEGIN
-INSERT INTO [Histroy].[PersonExperience]
-SELECT * FROM INSERTED
-END
 GO
 
 ALTER TABLE [dbo].[PersonExperience]

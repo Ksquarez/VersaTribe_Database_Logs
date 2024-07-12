@@ -11,8 +11,8 @@
 ON [PRIMARY]
 GO
 
-CREATE INDEX [IX_Institutes]
-  ON [dbo].[Institutes] ([Inst_Name], [Inst_Type])
+CREATE UNIQUE INDEX [IX_Institutes]
+  ON [dbo].[Institutes] ([Inst_Name])
   ON [PRIMARY]
 GO
 

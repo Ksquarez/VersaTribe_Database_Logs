@@ -3,7 +3,6 @@
   [Candidate_Id] [int] NULL,
   [Skill_Id] [int] NULL,
   [Experience] [tinyint] NULL,
-  [Mandatory] [bit] NULL,
   [Status] [int] NOT NULL CONSTRAINT [DF_Candidate_Skills_Status] DEFAULT (0),
   [TStamp] [datetime2] NOT NULL,
   [TOwner] [nvarchar](256) NOT NULL,

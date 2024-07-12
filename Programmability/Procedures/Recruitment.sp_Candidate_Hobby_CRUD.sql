@@ -1,11 +1,11 @@
 ﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
 GO
-Create PROCEDURE [Recruitment].[sp_Candidate_Hobby_CRUD]
+CREATE PROCEDURE [Recruitment].[sp_Candidate_Hobby_CRUD]
 (
   @Candidate_Hobby_Id INT = NULL,
   @Candidate_Id INT = NULL,
   @Hobby_Id INT = NULL,
-  @Mandatory BIT = NULL,
+  --@Mandatory BIT = NULL,
   @Status INT = NULL,
   @TStamp DATETIME2(7) = NULL,
   @TOwner NVARCHAR(256) = NULL,
@@ -22,15 +22,15 @@ BEGIN TRY
         WHERE (@Candidate_Hobby_Id IS NULL OR Candidate_Hobby_Id = @Candidate_Hobby_Id)
             AND (@Candidate_Id IS NULL OR Candidate_Id = @Candidate_Id)
             AND (@Hobby_Id IS NULL OR Hobby_Id = @Hobby_Id)
-            AND (@Mandatory IS NULL OR Mandatory = @Mandatory)
+            --AND (@Mandatory IS NULL OR Mandatory = @Mandatory)
             AND (@Status IS NULL OR Status = @Status)
             AND (@TStamp IS NULL OR TStamp = @TStamp)
             AND (@TOwner IS NULL OR TOwner = @TOwner)
     END
     ELSE IF @Action = 'INSERT'
     BEGIN
-        INSERT INTO Recruitment.Candidate_Hobby (Candidate_Id, Hobby_Id, Mandatory, Status, TStamp, TOwner)
-        VALUES (@Candidate_Id, @Hobby_Id, @Mandatory, @Status, @TStamp, @TOwner)
+        INSERT INTO Recruitment.Candidate_Hobby (Candidate_Id, Hobby_Id,  Status, TStamp, TOwner)
+        VALUES (@Candidate_Id, @Hobby_Id, @Status, @TStamp, @TOwner)
 
         SELECT * FROM Recruitment.Candidate_Hobby WHERE Candidate_Hobby_Id = SCOPE_IDENTITY();
     END
@@ -39,7 +39,7 @@ BEGIN TRY
         UPDATE Recruitment.Candidate_Hobby
         SET Candidate_Id = ISNULL(@Candidate_Id, Candidate_Id),
             Hobby_Id = ISNULL(@Hobby_Id, Hobby_Id),
-            Mandatory = ISNULL(@Mandatory, Mandatory),
+            --Mandatory = ISNULL(@Mandatory, Mandatory),
             Status = ISNULL(@Status, Status),
             TStamp = @TStamp,
             TOwner = @TOwner

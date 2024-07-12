@@ -7,7 +7,9 @@
   [Contact_number] [nvarchar](4000) NULL,
   [TStamp] [nvarchar](4000) NULL,
   [TOwner] [nvarchar](4000) NULL,
-  [Status] [nvarchar](4000) NULL
+  [Status] [nvarchar](4000) NULL,
+  [Org_Pic] [nvarchar](max) NULL
 )
 ON [PRIMARY]
+TEXTIMAGE_ON [PRIMARY]
 GO

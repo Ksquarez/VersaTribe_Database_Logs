@@ -15,21 +15,24 @@
   [TStamp] [datetime] NULL,
   [TOwner] [nvarchar](256) NULL,
   [Status] [int] NULL,
-  [Entity_TStamp] [dbo].[Entity_TStamp] NULL,
-  [Service_TStamp] [dbo].[Service_TStamp] NULL,
-  [Service_Response] [dbo].[Service_Response] NULL,
+  [Active] [bit] NULL,
+  [context_Id] [int] NULL,
   CONSTRAINT [PK_did_route] PRIMARY KEY CLUSTERED ([id])
 )
 ON [PRIMARY]
 GO
 
 CREATE UNIQUE INDEX [UK_did_route]
-  ON [dbo].[did_route] ([Srv_Id], [Org_Id], [description])
+  ON [dbo].[did_route] ([Org_Id], [did])
   ON [PRIMARY]
 GO
 
 ALTER TABLE [dbo].[did_route]
   ADD FOREIGN KEY ([call_time_id]) REFERENCES [dbo].[call_times] ([call_time_id]) ON DELETE SET NULL
+GO
+
+ALTER TABLE [dbo].[did_route]
+  ADD FOREIGN KEY ([context_Id]) REFERENCES [dbo].[context] ([Id])
 GO
 
 ALTER TABLE [dbo].[did_route]

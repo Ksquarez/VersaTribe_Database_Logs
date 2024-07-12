@@ -1,18 +1,17 @@
 ﻿CREATE TABLE [dbo].[Project_Qualification_Criteria] (
   [Proj_Qual_Id] [int] IDENTITY,
   [Project_Id] [int] NOT NULL,
-  [QI] [int] NOT NULL,
-  [YOP] [date] NOT NULL,
-  [Grade] [varchar](5) NOT NULL,
-  [City] [nvarchar](50) NOT NULL,
-  [Mandatory_Fields] [nvarchar](max) NULL,
+  [QI] [int] NULL,
+  [YOP] [date] NULL,
+  [Grade] [varchar](5) NULL,
+  [City] [nvarchar](50) NULL,
+  [Mandatory] [bit] NULL,
   [Status] [int] NOT NULL CONSTRAINT [DF_Project_Qualification_Criteria_Status] DEFAULT (0),
   [TStamp] [datetime2] NOT NULL,
   [TOwner] [nvarchar](256) NOT NULL,
   CONSTRAINT [PK_Project_Qualification_Criteria_Id] PRIMARY KEY CLUSTERED ([Proj_Qual_Id])
 )
 ON [PRIMARY]
-TEXTIMAGE_ON [PRIMARY]
 GO
 
 CREATE UNIQUE INDEX [IX_Project_Qualification_Criteria]

@@ -15,17 +15,6 @@ CREATE UNIQUE INDEX [IX_Course]
   ON [PRIMARY]
 GO
 
-SET QUOTED_IDENTIFIER, ANSI_NULLS ON
-GO
-CREATE TRIGGER [dbo].[tr_CourseActivity]
-ON [dbo].[Course]
-AFTER INSERT, UPDATE AS
-BEGIN
-INSERT INTO [Histroy].[Course]
-SELECT * FROM INSERTED
-END
-GO
-
 ALTER TABLE [dbo].[Course]
   ADD CONSTRAINT [FK_Course_CourseType] FOREIGN KEY ([CTyp_Id]) REFERENCES [dbo].[CourseType] ([CTyp_Id])
 GO

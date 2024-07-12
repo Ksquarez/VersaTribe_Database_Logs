@@ -1,14 +1,17 @@
 ﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
 GO
-Create PROCEDURE [Recruitment].[sp_Job_Request_Qualification_CRUD]
+CREATE PROCEDURE [Recruitment].[sp_Job_Request_Qualification_CRUD]
 (
   @Job_Request_Qual_Id INT = NULL,
   @Job_Request_Id INT = NULL,
-  @Cou_Id INT = NULL,
-  @Mandatory BIT = NULL,
-  @Status INT = NULL,
+  @QI INT = NULL,
+  @YOP DATE,
+  @Grade VARCHAR(5),
+  @City NVARCHAR(50),
   @TStamp DATETIME2(7) = NULL,
   @TOwner NVARCHAR(256) = NULL,  
+  @Mandatory BIT = NULL,
+  @Status INT = 0,  
   @Action NVARCHAR(100)
 )
 AS
@@ -21,16 +24,19 @@ BEGIN TRY
         FROM Recruitment.Job_Request_Qualification
         WHERE (@Job_Request_Qual_Id IS NULL OR Job_Request_Qual_Id = @Job_Request_Qual_Id)
             AND (@Job_Request_Id IS NULL OR Job_Request_Id = @Job_Request_Id)
-            AND (@Cou_Id IS NULL OR Cou_Id = @Cou_Id)
+            AND (@QI IS NULL OR QI = @QI)
+            AND (@YOP IS NULL OR YOP = @YOP)
+            AND (@Grade IS NULL OR Grade = @Grade)
+            AND (@City IS NULL OR City = @City)
             AND (@Mandatory IS NULL OR Mandatory = @Mandatory)
             AND (@Status IS NULL OR Status = @Status)
             AND (@TStamp IS NULL OR TStamp = @TStamp)
-            AND (@TOwner IS NULL OR TOwner = @TOwner)
+            AND (@TOwner IS NULL OR TOwner = @TOwner);
     END
     ELSE IF @Action = 'INSERT'
     BEGIN
-        INSERT INTO Recruitment.Job_Request_Qualification (Job_Request_Id, Cou_Id, Mandatory, Status, TStamp, TOwner)
-        VALUES (@Job_Request_Id, @Cou_Id, @Mandatory, @Status, @TStamp, @TOwner)
+        INSERT INTO Recruitment.Job_Request_Qualification (Job_Request_Id, QI, YOP, Grade, City, Status, TStamp, TOwner, Mandatory)
+        VALUES (@Job_Request_Id, @QI, @YOP, @Grade, @City, @Status, @TStamp, @TOwner, @Mandatory)
 
         SELECT * FROM Recruitment.Job_Request_Qualification WHERE Job_Request_Qual_Id = SCOPE_IDENTITY();
     END
@@ -38,11 +44,14 @@ BEGIN TRY
     BEGIN
         UPDATE Recruitment.Job_Request_Qualification
         SET Job_Request_Id = ISNULL(@Job_Request_Id, Job_Request_Id),
-            Cou_Id = ISNULL(@Cou_Id, Cou_Id),
-            Mandatory = ISNULL(@Mandatory, Mandatory),
+            QI = ISNULL(@QI, QI),
+            YOP = ISNULL(@YOP, YOP),
+            Grade = ISNULL(@Grade, Grade),
+            City = ISNULL(@City, City),
             Status = ISNULL(@Status, Status),
-            TStamp = @TStamp,
-            TOwner = @TOwner            
+            TStamp = ISNULL(@TStamp, TStamp),
+            TOwner = ISNULL(@TOwner, TOwner),
+            Mandatory = ISNULL(@Mandatory, Mandatory)
         WHERE Job_Request_Qual_Id = @Job_Request_Qual_Id;
 
         SELECT * FROM Recruitment.Job_Request_Qualification WHERE Job_Request_Qual_Id = @Job_Request_Qual_Id;

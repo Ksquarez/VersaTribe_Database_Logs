@@ -8,14 +8,12 @@ SELECT
     dbo.OrgServers.Status,
     dbo.OrgServers.TStamp,
     dbo.OrgServers.TOwner,
-    dbo.OrgServers.Group_Id,
     dbo.OrgServers.Is_Prime,
     dbo.Org.Org_Name,
     dbo.Org.OrgAdmin_Id,
     dbo.Servers.IP_Address,
     dbo.Servers.Name,
-    dbo.Servers.Server_Domain,
-     (SELECT COUNT(*) FROM Extensions WHERE Extensions.Org_Id = OrgServers.Org_Id AND Extensions.Srv_Id = OrgServers.Server_Id) AS 'Extensions_Person_Count'
+    dbo.Servers.Server_Domain
 FROM
     dbo.Org
     INNER JOIN dbo.OrgServers ON dbo.Org.Org_Id = dbo.OrgServers.Org_Id

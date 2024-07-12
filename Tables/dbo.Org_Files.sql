@@ -11,6 +11,8 @@
   [TOwner] [nvarchar](256) NULL,
   [File_Comment] [nvarchar](200) NULL,
   [Status] [int] NULL,
+  [Owner] [nvarchar](256) NULL,
+  [Active] [bit] NULL,
   CONSTRAINT [PK_Org_Files] PRIMARY KEY CLUSTERED ([Id])
 )
 ON [PRIMARY]

@@ -1,17 +1,16 @@
 ﻿CREATE TABLE [dbo].[Project_Experience_Criteria] (
   [Proj_Exp_Id] [int] IDENTITY,
-  [Project_Id] [int] NOT NULL,
-  [Exp_Id] [int] NOT NULL,
+  [Project_Id] [int] NULL,
+  [Exp_Id] [int] NULL,
   [Exp_months] [int] NULL,
   [Job_Title] [nvarchar](50) NULL,
-  [Mandatory_Fields] [nvarchar](max) NULL,
+  [Mandatory] [bit] NULL,
   [Status] [int] NOT NULL CONSTRAINT [DF_Project_Experience_Criteria_Status] DEFAULT (0),
   [TStamp] [datetime2] NOT NULL,
   [TOwner] [nvarchar](256) NOT NULL,
   CONSTRAINT [PK_Project_Experience_Criteria] PRIMARY KEY CLUSTERED ([Proj_Exp_Id])
 )
 ON [PRIMARY]
-TEXTIMAGE_ON [PRIMARY]
 GO
 
 CREATE UNIQUE INDEX [IX_Project_Experience_Criteria]

@@ -1,6 +1,6 @@
 ﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
 GO
-Create PROC [Recruitment].[sp_Job_Request_Experience_CRUD]
+CREATE PROC [Recruitment].[sp_Job_Request_Experience_CRUD]
 (
   @Job_Request_Experience_Id INT = NULL,
   @Job_Request_Id INT = NULL,

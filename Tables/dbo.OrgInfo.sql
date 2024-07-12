@@ -8,6 +8,7 @@
   [TStamp] [datetime2] NOT NULL,
   [TOwner] [nvarchar](256) NOT NULL,
   [Status] [int] NOT NULL CONSTRAINT [DF__OrgInfo__Status__16EE5E27] DEFAULT (0),
+  [Org_Pic] [nvarchar](max) NULL,
   CONSTRAINT [PK_OrgInfo] PRIMARY KEY CLUSTERED ([Org_Id])
 )
 ON [PRIMARY]
