@@ -1,11 +1,11 @@
 ﻿CREATE TABLE [dbo].[Project_Skills_Criteria] (
   [Proj_Skill_Cri_Id] [int] IDENTITY,
-  [Project_Id] [int] NOT NULL,
-  [Skill_Id] [int] NOT NULL,
+  [Project_Id] [int] NULL,
+  [Skill_Id] [int] NULL,
   [Experience] [tinyint] NULL,
-  [Status] [int] NOT NULL CONSTRAINT [DF_Project_Skills_Criteria_Status] DEFAULT (0),
-  [TStamp] [datetime2] NOT NULL,
-  [TOwner] [nvarchar](256) NOT NULL,
+  [Status] [int] NULL CONSTRAINT [DF_Project_Skills_Criteria_Status] DEFAULT (0),
+  [TStamp] [datetime2] NULL,
+  [TOwner] [nvarchar](256) NULL,
   [Mandatory] [bit] NULL,
   CONSTRAINT [PK_Project_Skills_Criteria] PRIMARY KEY CLUSTERED ([Proj_Skill_Cri_Id])
 )

@@ -4,9 +4,9 @@
   [Skill_Id] [int] NULL,
   [Experience] [tinyint] NULL,
   [Mandatory] [bit] NULL,
-  [Status] [int] NOT NULL CONSTRAINT [DF_Job_Request_Skills_Status] DEFAULT (0),
-  [TStamp] [datetime2] NOT NULL,
-  [TOwner] [nvarchar](256) NOT NULL,
+  [Status] [int] NULL CONSTRAINT [DF_Job_Request_Skills_Status] DEFAULT (0),
+  [TStamp] [datetime2] NULL,
+  [TOwner] [nvarchar](256) NULL,
   CONSTRAINT [PK_Job_Request_Skills] PRIMARY KEY CLUSTERED ([Job_Request_Skill_Id])
 )
 ON [PRIMARY]

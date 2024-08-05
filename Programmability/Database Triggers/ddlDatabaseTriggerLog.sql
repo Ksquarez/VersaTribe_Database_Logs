@@ -46,5 +46,8 @@ BEGIN
 END;
 GO
 
+DISABLE TRIGGER [ddlDatabaseTriggerLog] ON DATABASE
+GO
+
 EXEC sys.sp_addextendedproperty N'MS_Description', N'Database trigger to audit all of the DDL changes made to the AdventureWorks 2016 database.', 'TRIGGER', N'ddlDatabaseTriggerLog'
 GO

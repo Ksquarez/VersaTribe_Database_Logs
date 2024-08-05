@@ -5,9 +5,9 @@
   [YOP] [date] NULL,
   [Grade] [varchar](5) NULL,
   [City] [nvarchar](50) NULL,
-  [Status] [int] NOT NULL CONSTRAINT [DF_Candidate_Qualification_Status] DEFAULT (0),
-  [TStamp] [datetime2] NOT NULL,
-  [TOwner] [nvarchar](256) NOT NULL,
+  [Status] [int] NULL CONSTRAINT [DF_Candidate_Qualification_Status] DEFAULT (0),
+  [TStamp] [datetime2] NULL,
+  [TOwner] [nvarchar](256) NULL,
   CONSTRAINT [PK_Candidate_Qualification] PRIMARY KEY CLUSTERED ([Candidate_Qualification_Id])
 )
 ON [PRIMARY]

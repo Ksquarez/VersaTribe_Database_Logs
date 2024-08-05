@@ -6,9 +6,9 @@
   [Job_Title] [nvarchar](50) NULL,
   [Start_Date] [date] NULL,
   [End_Date] [date] NULL,
-  [Status] [int] NOT NULL CONSTRAINT [DF_Candidate_Experience_Status] DEFAULT (0),
-  [TStamp] [datetime2] NOT NULL,
-  [TOwner] [nvarchar](256) NOT NULL,
+  [Status] [int] NULL CONSTRAINT [DF_Candidate_Experience_Status] DEFAULT (0),
+  [TStamp] [datetime2] NULL,
+  [TOwner] [nvarchar](256) NULL,
   CONSTRAINT [PK_Candidate_Experience] PRIMARY KEY CLUSTERED ([Candidate_Experience_Id])
 )
 ON [PRIMARY]

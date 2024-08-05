@@ -1,14 +1,14 @@
 ﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
 GO
-CREATE VIEW [dbo].[Vw_JobRequest_Qualification]
+CREATE VIEW [Recruitment].[Vw_JobRequest_Qualification]
 AS
-SELECT        Recruitment.Job_Request_Qualification.Job_Request_Qual_Id, Recruitment.Job_Request_Qualification.Job_Request_Id, Recruitment.Job_Request_Qualification.QI, Recruitment.Job_Request_Qualification.YOP, 
+SELECT        Recruitment.Job_Request_Qualification.Job_Request_Qual_Id, Recruitment.Job_Request_Qualification.Job_Request_Id, Recruitment.Job_Request_Qualification.QI_Id, Recruitment.Job_Request_Qualification.YOP, 
                          Recruitment.Job_Request_Qualification.Grade, Recruitment.Job_Request_Qualification.City, Recruitment.Job_Request_Qualification.Mandatory, Recruitment.Job_Request_Qualification.Status, 
                          Recruitment.Job_Request_Qualification.TStamp, Recruitment.Job_Request_Qualification.TOwner, dbo.Institutes.Inst_Name, dbo.Course.Cou_Name
 FROM            dbo.Course INNER JOIN
                          dbo.Qualification ON dbo.Course.Cou_Id = dbo.Qualification.Cou_Id INNER JOIN
                          dbo.Institutes ON dbo.Qualification.Inst_Id = dbo.Institutes.Inst_Id INNER JOIN
-                         Recruitment.Job_Request_Qualification ON dbo.Qualification.QI_Id = Recruitment.Job_Request_Qualification.QI AND dbo.Qualification.QI_Id = Recruitment.Job_Request_Qualification.QI
+                         Recruitment.Job_Request_Qualification ON dbo.Qualification.QI_Id = Recruitment.Job_Request_Qualification.QI_Id AND dbo.Qualification.QI_Id = Recruitment.Job_Request_Qualification.QI_Id
 GO
 
 EXEC sys.sp_addextendedproperty N'MS_DiagramPane1', N'[0E232FF0-B466-11cf-A24F-00AA00A3EFFF, 1.00]
@@ -148,8 +148,8 @@ Begin DesignProperties =
       End
    End
 End
-', 'SCHEMA', N'dbo', 'VIEW', N'Vw_JobRequest_Qualification'
+', 'SCHEMA', N'Recruitment', 'VIEW', N'Vw_JobRequest_Qualification'
 GO
 
-EXEC sys.sp_addextendedproperty N'MS_DiagramPaneCount', 1, 'SCHEMA', N'dbo', 'VIEW', N'Vw_JobRequest_Qualification'
+EXEC sys.sp_addextendedproperty N'MS_DiagramPaneCount', 1, 'SCHEMA', N'Recruitment', 'VIEW', N'Vw_JobRequest_Qualification'
 GO

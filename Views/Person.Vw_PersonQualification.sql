@@ -4,7 +4,7 @@ CREATE VIEW [Person].[Vw_PersonQualification]
 AS
 SELECT        dbo.Course.Cou_Name, dbo.PersonQualification.PQ_Id, dbo.PersonQualification.QI_Id, dbo.PersonQualification.Person_Id, dbo.PersonQualification.YOP, dbo.PersonQualification.Grade, dbo.PersonQualification.Status, 
                          dbo.PersonQualification.TOwner, dbo.PersonQualification.TStamp, dbo.PersonQualification.City, dbo.Qualification.Cou_Id, dbo.Qualification.Inst_Id, dbo.Institutes.Inst_Name, dbo.Institutes.Inst_Type, 
-                         dbo.CourseType.Ctyp_Name, dbo.Course.CTyp_Id, dbo.Person.FirstName, dbo.Person.LastName, dbo.Person.TOwner AS PersonEmail
+                         dbo.CourseType.Ctyp_Name, dbo.Course.CTyp_Id
 FROM            dbo.Institutes INNER JOIN
                          dbo.Course INNER JOIN
                          dbo.CourseType ON dbo.Course.CTyp_Id = dbo.CourseType.CTyp_Id INNER JOIN

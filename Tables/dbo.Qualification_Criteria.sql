@@ -1,10 +1,10 @@
 ﻿CREATE TABLE [dbo].[Qualification_Criteria] (
-  [Training_Id] [int] NOT NULL,
-  [Cou_Id] [int] NOT NULL,
-  [Status] [int] NOT NULL CONSTRAINT [DF_Qualification_Criteria_Status] DEFAULT (0),
-  [TStamp] [datetime2] NOT NULL,
-  [TOwner] [nvarchar](256) NOT NULL,
-  [Mandatory] [bit] NOT NULL,
+  [Training_Id] [int] NULL,
+  [Cou_Id] [int] NULL,
+  [Status] [int] NULL CONSTRAINT [DF_Qualification_Criteria_Status] DEFAULT (0),
+  [TStamp] [datetime2] NULL,
+  [TOwner] [nvarchar](256) NULL,
+  [Mandatory] [bit] NULL,
   [Id] [int] IDENTITY,
   CONSTRAINT [PK_Qualification_Criteria_Id] PRIMARY KEY CLUSTERED ([Id])
 )

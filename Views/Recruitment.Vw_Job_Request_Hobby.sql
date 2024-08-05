@@ -1,13 +1,11 @@
 ﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
 GO
-CREATE VIEW [Person].[Vw_PersonExperience]
+CREATE VIEW [Recruitment].[Vw_Job_Request_Hobby]
 AS
-SELECT        dbo.PersonExperience.PerExp_Id, dbo.PersonExperience.Person_Id, dbo.PersonExperience.Exp_Id, dbo.PersonExperience.Exp_months, dbo.PersonExperience.Job_Title, dbo.PersonExperience.Status, 
-                         dbo.PersonExperience.Start_date, dbo.PersonExperience.End_Date, dbo.PersonExperience.TStamp, dbo.PersonExperience.TOwner, 
-                         dbo.Experience.Company_Name, dbo.Experience.Industry_Field_Name
-FROM            dbo.Experience INNER JOIN
-                         dbo.PersonExperience ON dbo.Experience.Exp_Id = dbo.PersonExperience.Exp_Id INNER JOIN
-                         dbo.Person ON dbo.PersonExperience.Person_Id = dbo.Person.Person_Id
+SELECT        Recruitment.Job_Request_Hobby.Job_Request_Hobby_Id, Recruitment.Job_Request_Hobby.Job_Request_Id, Recruitment.Job_Request_Hobby.Hobby_Id, Recruitment.Job_Request_Hobby.Mandatory, 
+                         Recruitment.Job_Request_Hobby.Status, Recruitment.Job_Request_Hobby.TStamp, Recruitment.Job_Request_Hobby.TOwner, dbo.Hobby.Name
+FROM            dbo.Hobby INNER JOIN
+                         Recruitment.Job_Request_Hobby ON dbo.Hobby.Hobby_Id = Recruitment.Job_Request_Hobby.Hobby_Id
 GO
 
 EXEC sys.sp_addextendedproperty N'MS_DiagramPane1', N'[0E232FF0-B466-11cf-A24F-00AA00A3EFFF, 1.00]
@@ -81,35 +79,25 @@ Begin DesignProperties =
          Left = 0
       End
       Begin Tables = 
-         Begin Table = "Experience"
+         Begin Table = "Hobby"
             Begin Extent = 
                Top = 6
                Left = 38
-               Bottom = 136
-               Right = 237
+               Bottom = 264
+               Right = 208
             End
             DisplayFlags = 280
             TopColumn = 0
          End
-         Begin Table = "PersonExperience"
+         Begin Table = "Job_Request_Hobby (Recruitment)"
             Begin Extent = 
                Top = 6
-               Left = 275
-               Bottom = 136
-               Right = 445
+               Left = 246
+               Bottom = 250
+               Right = 577
             End
             DisplayFlags = 280
-            TopColumn = 3
-         End
-         Begin Table = "Person"
-            Begin Extent = 
-               Top = 138
-               Left = 38
-               Bottom = 268
-               Right = 208
-            End
-            DisplayFlags = 280
-            TopColumn = 6
+            TopColumn = 0
          End
       End
    End
@@ -137,8 +125,8 @@ Begin DesignProperties =
       End
    End
 End
-', 'SCHEMA', N'Person', 'VIEW', N'Vw_PersonExperience'
+', 'SCHEMA', N'Recruitment', 'VIEW', N'Vw_Job_Request_Hobby'
 GO
 
-EXEC sys.sp_addextendedproperty N'MS_DiagramPaneCount', 1, 'SCHEMA', N'Person', 'VIEW', N'Vw_PersonExperience'
+EXEC sys.sp_addextendedproperty N'MS_DiagramPaneCount', 1, 'SCHEMA', N'Recruitment', 'VIEW', N'Vw_Job_Request_Hobby'
 GO

@@ -1,9 +1,11 @@
 ﻿CREATE TABLE [dbo].[PersonHobby] (
+  [Id] [int] IDENTITY,
   [Person_Id] [int] NOT NULL,
   [Hobby_Id] [int] NOT NULL,
   [Status] [int] NOT NULL CONSTRAINT [DF_PersonHobby_Status] DEFAULT (0),
   [TOwner] [nvarchar](256) NOT NULL,
-  [TStamp] [datetime2] NOT NULL
+  [TStamp] [datetime2] NOT NULL,
+  CONSTRAINT [PK_PersonHobby_Id] PRIMARY KEY CLUSTERED ([Id])
 )
 ON [PRIMARY]
 GO

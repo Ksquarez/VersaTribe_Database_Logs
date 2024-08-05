@@ -1,10 +1,10 @@
 ﻿CREATE TABLE [dbo].[Hobby_Criteria] (
   [Id] [int] IDENTITY,
-  [Training_Id] [int] NOT NULL,
-  [Hobby_Id] [int] NOT NULL,
-  [Status] [int] NOT NULL CONSTRAINT [DF_Hobby_Criteria_Status] DEFAULT (0),
-  [TStamp] [datetime2] NOT NULL,
-  [TOwner] [nvarchar](256) NOT NULL,
+  [Training_Id] [int] NULL,
+  [Hobby_Id] [int] NULL,
+  [Status] [int] NULL CONSTRAINT [DF_Hobby_Criteria_Status] DEFAULT (0),
+  [TStamp] [datetime2] NULL,
+  [TOwner] [nvarchar](256) NULL,
   [Mandatory] [bit] NULL,
   CONSTRAINT [PK_Hobby_Criteria_Id] PRIMARY KEY CLUSTERED ([Id])
 )

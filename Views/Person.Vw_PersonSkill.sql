@@ -2,8 +2,7 @@
 GO
 CREATE VIEW [Person].[Vw_PersonSkill]
 AS
-SELECT        dbo.PersonSkill.PerSk_Id, dbo.PersonSkill.Person_Id, dbo.PersonSkill.Skill_Id, dbo.PersonSkill.Experience, dbo.PersonSkill.Status, dbo.PersonSkill.TStamp, dbo.PersonSkill.TOwner, dbo.Skills.Skill_Field, 
-                         dbo.Skills.Skill_Name, dbo.Person.FirstName, dbo.Person.LastName, dbo.Person.TOwner AS PersonEmail
+SELECT        dbo.PersonSkill.*, dbo.Skills.Skill_Name
 FROM            dbo.Person INNER JOIN
                          dbo.PersonSkill ON dbo.Person.Person_Id = dbo.PersonSkill.Person_Id INNER JOIN
                          dbo.Skills ON dbo.PersonSkill.Skill_Id = dbo.Skills.Skill_Id
@@ -88,13 +87,13 @@ Begin DesignProperties =
                Right = 196
             End
             DisplayFlags = 280
-            TopColumn = 6
+            TopColumn = 4
          End
          Begin Table = "PersonSkill"
             Begin Extent = 
                Top = 6
                Left = 246
-               Bottom = 136
+               Bottom = 235
                Right = 416
             End
             DisplayFlags = 280
@@ -108,7 +107,7 @@ Begin DesignProperties =
                Right = 620
             End
             DisplayFlags = 280
-            TopColumn = 2
+            TopColumn = 0
          End
       End
    End

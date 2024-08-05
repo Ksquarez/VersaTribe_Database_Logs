@@ -1,14 +1,14 @@
 ﻿CREATE TABLE [dbo].[Project_Qualification_Criteria] (
   [Proj_Qual_Id] [int] IDENTITY,
-  [Project_Id] [int] NOT NULL,
+  [Project_Id] [int] NULL,
   [QI] [int] NULL,
   [YOP] [date] NULL,
   [Grade] [varchar](5) NULL,
   [City] [nvarchar](50) NULL,
   [Mandatory] [bit] NULL,
-  [Status] [int] NOT NULL CONSTRAINT [DF_Project_Qualification_Criteria_Status] DEFAULT (0),
-  [TStamp] [datetime2] NOT NULL,
-  [TOwner] [nvarchar](256) NOT NULL,
+  [Status] [int] NULL CONSTRAINT [DF_Project_Qualification_Criteria_Status] DEFAULT (0),
+  [TStamp] [datetime2] NULL,
+  [TOwner] [nvarchar](256) NULL,
   CONSTRAINT [PK_Project_Qualification_Criteria_Id] PRIMARY KEY CLUSTERED ([Proj_Qual_Id])
 )
 ON [PRIMARY]

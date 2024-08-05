@@ -1,8 +1,8 @@
 ﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
 GO
-CREATE VIEW [dbo].[Vw_JobRequest_Experience]
+CREATE VIEW [Recruitment].[Vw_JobRequest_Experience]
 AS
-SELECT        Recruitment.Job_Request_Experience.Job_Request_Experience_Id, Recruitment.Job_Request_Experience.Job_Request_Id, Recruitment.Job_Request_Experience.Exp_Id, Recruitment.Job_Request_Experience.Exp_Months, 
+SELECT        Recruitment.Job_Request_Experience.Job_Request_Experience_Id, Recruitment.Job_Request_Experience.Job_Request_Id, Recruitment.Job_Request_Experience.Exp_Id, Recruitment.Job_Request_Experience.Exp_months, 
                          Recruitment.Job_Request_Experience.Job_Title, Recruitment.Job_Request_Experience.Mandatory, Recruitment.Job_Request_Experience.Status, Recruitment.Job_Request_Experience.TStamp, 
                          Recruitment.Job_Request_Experience.TOwner, dbo.Experience.Company_Name, dbo.Experience.Industry_Field_Name
 FROM            dbo.Experience INNER JOIN
@@ -126,8 +126,8 @@ Begin DesignProperties =
       End
    End
 End
-', 'SCHEMA', N'dbo', 'VIEW', N'Vw_JobRequest_Experience'
+', 'SCHEMA', N'Recruitment', 'VIEW', N'Vw_JobRequest_Experience'
 GO
 
-EXEC sys.sp_addextendedproperty N'MS_DiagramPaneCount', 1, 'SCHEMA', N'dbo', 'VIEW', N'Vw_JobRequest_Experience'
+EXEC sys.sp_addextendedproperty N'MS_DiagramPaneCount', 1, 'SCHEMA', N'Recruitment', 'VIEW', N'Vw_JobRequest_Experience'
 GO

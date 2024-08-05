@@ -1,11 +1,11 @@
 ﻿CREATE TABLE [dbo].[Experience_Criteria] (
-  [Training_Id] [int] NOT NULL,
-  [Exp_Id] [int] NOT NULL,
+  [Training_Id] [int] NULL,
+  [Exp_Id] [int] NULL,
   [Exp_months] [int] NULL,
   [Job_Title] [nvarchar](50) NULL,
-  [Status] [int] NOT NULL CONSTRAINT [DF_Experience_Criteria_Status] DEFAULT (0),
-  [TStamp] [datetime2] NOT NULL,
-  [TOwner] [nvarchar](256) NOT NULL,
+  [Status] [int] NULL CONSTRAINT [DF_Experience_Criteria_Status] DEFAULT (0),
+  [TStamp] [datetime2] NULL,
+  [TOwner] [nvarchar](256) NULL,
   [Mandatory] [bit] NULL,
   [Id] [int] IDENTITY,
   CONSTRAINT [PK_Experience_Criteria] PRIMARY KEY CLUSTERED ([Id])

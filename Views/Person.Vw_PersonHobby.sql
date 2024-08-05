@@ -2,8 +2,7 @@
 GO
 CREATE VIEW [Person].[Vw_PersonHobby]
 AS
-SELECT        dbo.PersonHobby.Person_Id, dbo.PersonHobby.Hobby_Id, dbo.PersonHobby.Status, dbo.PersonHobby.TOwner, dbo.PersonHobby.TStamp, dbo.Hobby.Name, dbo.Person.FirstName, dbo.Person.LastName, 
-                         dbo.Person.TOwner AS PersonEmail
+SELECT        dbo.PersonHobby.Id, dbo.PersonHobby.Person_Id, dbo.PersonHobby.Hobby_Id, dbo.PersonHobby.Status, dbo.PersonHobby.TOwner, dbo.PersonHobby.TStamp, dbo.Hobby.Name
 FROM            dbo.Hobby INNER JOIN
                          dbo.PersonHobby ON dbo.Hobby.Hobby_Id = dbo.PersonHobby.Hobby_Id INNER JOIN
                          dbo.Person ON dbo.PersonHobby.Person_Id = dbo.Person.Person_Id

@@ -16,17 +16,6 @@ CREATE UNIQUE INDEX [IX_Institutes]
   ON [PRIMARY]
 GO
 
-SET QUOTED_IDENTIFIER, ANSI_NULLS ON
-GO
-Create TRIGGER [dbo].[tr_InstitutesActivity]
-ON [dbo].[Institutes]
-AFTER INSERT, UPDATE AS
-BEGIN
-INSERT INTO InstitutesHistory
-SELECT * FROM INSERTED
-END
-GO
-
 ALTER TABLE [dbo].[Institutes]
   ADD CONSTRAINT [FK_Institutes_AspNetUsers] FOREIGN KEY ([TOwner]) REFERENCES [dbo].[AspNetUsers] ([UserName]) ON UPDATE CASCADE
 GO

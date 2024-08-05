@@ -3,9 +3,9 @@
   [Job_Request_Id] [int] NULL,
   [Hobby_Id] [int] NULL,
   [Mandatory] [bit] NULL,
-  [Status] [int] NOT NULL CONSTRAINT [DF_Job_Request_Hobby_Status] DEFAULT (0),
-  [TStamp] [datetime2] NOT NULL,
-  [TOwner] [nvarchar](256) NOT NULL,
+  [Status] [int] NULL CONSTRAINT [DF_Job_Request_Hobby_Status] DEFAULT (0),
+  [TStamp] [datetime2] NULL,
+  [TOwner] [nvarchar](256) NULL,
   CONSTRAINT [PK_Job_Request_Hobby] PRIMARY KEY CLUSTERED ([Job_Request_Hobby_Id])
 )
 ON [PRIMARY]

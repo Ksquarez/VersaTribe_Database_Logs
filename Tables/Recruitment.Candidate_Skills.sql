@@ -3,9 +3,9 @@
   [Candidate_Id] [int] NULL,
   [Skill_Id] [int] NULL,
   [Experience] [tinyint] NULL,
-  [Status] [int] NOT NULL CONSTRAINT [DF_Candidate_Skills_Status] DEFAULT (0),
-  [TStamp] [datetime2] NOT NULL,
-  [TOwner] [nvarchar](256) NOT NULL,
+  [Status] [int] NULL CONSTRAINT [DF_Candidate_Skills_Status] DEFAULT (0),
+  [TStamp] [datetime2] NULL,
+  [TOwner] [nvarchar](256) NULL,
   CONSTRAINT [PK_Candidate_Skills] PRIMARY KEY CLUSTERED ([Candidate_Skills_Id])
 )
 ON [PRIMARY]

@@ -30,7 +30,7 @@ SET NOCOUNT ON;
     INNER JOIN 
         [dbo].[Institutes] i ON q.Inst_Id = i.Inst_Id
     WHERE 
-        cq.Candidate_Id = 1;
+        cq.Candidate_Id = @Candidate_Id;
 END TRY
 BEGIN CATCH
 
